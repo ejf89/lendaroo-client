@@ -8,8 +8,6 @@ export default function UserContainer (props) {
   return(
     <div>
       < UserView />
-    < BooksContainer books={props.books} />
-
     </div>
   )
 

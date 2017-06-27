@@ -19,7 +19,7 @@ class LoginForm extends Component {
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.onSubmit("whateber")
+    this.props.onSubmit(this.state)
     this.setState({username: '', password: ''})
   }
 
