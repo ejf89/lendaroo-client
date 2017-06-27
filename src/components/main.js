@@ -4,6 +4,7 @@ import LoginForm from './LoginForm'
 import UserContainer from './UserContainer'
 import BooksContainer from './BooksContainer'
 import {BooksAdapter} from '../adapters'
+import NavBar from './NavBar'
 
 class Main extends Component {
   constructor(){
@@ -32,11 +33,9 @@ class Main extends Component {
   render(){
     return(
       <div>
-        <h2>Welcome to Lendaroo</h2>
+        <NavBar style='inverse'/>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn}/>} />
-        < UserContainer />
-      < BooksContainer books={this.state.books} />
-
+        <Route path='/home' render={() =>< UserContainer books={this.state.books} /> } />
       </div>
     )
   }
