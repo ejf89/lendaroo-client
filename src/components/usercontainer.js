@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import UserView from './UserView'
 
 export default function UserContainer (props) {
 
   return(
-    <div>Im the user page</div>
+    <div>
+      < UserView />
+    </div>
   )
 
 }

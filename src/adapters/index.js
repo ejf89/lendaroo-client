@@ -5,8 +5,10 @@ export class BooksAdapter {
   static all(){
     return fetch(`${this.url()}`, {
       headers: headers()
-    }
-  )
+      }
+    )
+    .then( res => res.json() )
+    
   }
 
   static url(){

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import LoginForm from './loginform'
-import UserContainer from './usercontainer'
+import LoginForm from './LoginForm'
+import UserContainer from './UserContainer'
+import BooksContainer from './BooksContainer'
+import {BooksAdapter} from '../adapters'
 
 class Main extends Component {
   constructor(){
@@ -20,12 +22,20 @@ class Main extends Component {
     console.log('i am login')
   }
 
+  componentDidMount(){
+    BooksAdapter.all()
+    .then( data => this.setState({
+      books: data
+    }))
+  }
+
   render(){
     return(
       <div>
         <h2>Welcome to Lendaroo</h2>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn}/>} />
         < UserContainer />
+      < BooksContainer books={this.state.books} />
 
       </div>
     )
