@@ -20,7 +20,6 @@ export class BooksAdapter {
   }
 
   static addUserBook(userbook){
-
     return fetch(`${baseUrl}/userbooks`, {
       method: 'POST',
       headers: headers(),
@@ -29,7 +28,6 @@ export class BooksAdapter {
       })
     })
     .then( res => res.json())
-    .then(console.log)
   }
 
   static url(){
@@ -39,7 +37,7 @@ export class BooksAdapter {
 
 export class GoogleAdapter{
   static searchBooks(searchTerm){
-    return fetch(googleUrl + searchTerm, {
+    return fetch(googleUrl + searchTerm + '&maxResults=30', {
       headers: headers()
       }
     )

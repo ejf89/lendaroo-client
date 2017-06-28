@@ -14,7 +14,7 @@ class Main extends Component {
     this.state ={
       auth: {
         isLoggedIn :true,
-        user: {username: "abbey.shanahan", password: "pw"}
+        user: {username: "mustafa", password: "pw"}
       },
       books: [],
       userBooks: [],
@@ -57,16 +57,15 @@ class Main extends Component {
 //this function is adding the wrong object!!
   addUserBook(userbook){
     BooksAdapter.addUserBook(userbook)
-    .then( userbook => this.setState( (previousState) => {
+    .then( newBook => this.setState( (previousState) => {
       return {
-        userBooks: [...previousState.userBooks, userbook]
+        userBooks: [...previousState.userBooks, newBook]
       }
     })
   )
   }
 
   fireSearch(searchTerm){
-    console.log('in main')
     GoogleAdapter.searchBooks(searchTerm)
     .then( res => this.setState({
       searchResults: res.items
