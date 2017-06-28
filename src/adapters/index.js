@@ -1,5 +1,6 @@
 //LENDLENDLENDLER
 const baseUrl = 'http://localhost:3000/api/v1'
+const googleUrl = 'https://www.googleapis.com/books/v1/volumes?q='
 
 export class BooksAdapter {
   static all(){
@@ -33,6 +34,19 @@ export class BooksAdapter {
 
   static url(){
     return `${baseUrl}/books`
+  }
+}
+
+export class GoogleAdapter{
+  static searchBooks(searchTerm){
+    return fetch(googleUrl + searchTerm, {
+      headers: headers()
+      }
+    )
+    .then(res => res.json() )
+    // .then(res => {
+    //   debugger
+    // })
   }
 }
 

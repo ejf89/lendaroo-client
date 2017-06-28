@@ -3,9 +3,10 @@ import { Route } from 'react-router-dom'
 import LoginForm from './LoginForm'
 import UserContainer from './UserContainer'
 // import BooksContainer from './BooksContainer'
-import {BooksAdapter} from '../adapters'
+import {BooksAdapter, GoogleAdapter} from '../adapters'
 import NavBar from './NavBar'
 import BooksList from './BooksList'
+import GoogleSearch from './GoogleSearch'
 
 class Main extends Component {
   constructor(){
@@ -16,10 +17,12 @@ class Main extends Component {
         user: {username: "abbey.shanahan", password: "pw"}
       },
       books: [],
-      userBooks: []
+      userBooks: [],
+      searchResults: []
     }
     this.logIn = this.logIn.bind(this)
     this.addUserBook = this.addUserBook.bind(this)
+    this.fireSearch = this.fireSearch.bind(this)
   }
 
   logIn(loginParams){
@@ -44,13 +47,14 @@ class Main extends Component {
         books: data
       }))
 
-    BooksAdapter.fetchUserBooks(3)
+    BooksAdapter.fetchUserBooks(3) //change to current user id
       .then((data) => this.setState({
         userBooks: data.books
       })
     )
   }
 
+//this function is adding the wrong object!!
   addUserBook(userbook){
     BooksAdapter.addUserBook(userbook)
     .then( userbook => this.setState( (previousState) => {
@@ -59,6 +63,15 @@ class Main extends Component {
       }
     })
   )
+  }
+
+  fireSearch(searchTerm){
+    console.log('in main')
+    GoogleAdapter.searchBooks(searchTerm)
+    .then( res => this.setState({
+      searchResults: res.items
+    }))
+
   }
 
   welcomeToggle(){
@@ -72,11 +85,12 @@ class Main extends Component {
   render(){
     return(
       <div>
-        <NavBar style='inverse'/>
+        <NavBar />
         <h2>{this.welcomeToggle()}</h2>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn}/>} />
         <Route path='/home' render={() => < UserContainer userBooks={this.state.userBooks} /> } />
-        <Route path='/books' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
+        <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
+        <Route path='/search' render={() =>  <GoogleSearch fireSearch={this.fireSearch} searchResults={this.state.searchResults}/> } />
       </div>
     )
   }
