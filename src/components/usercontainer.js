@@ -7,7 +7,7 @@ export default function UserContainer (props) {
 
   return(
     <div>
-      < UserView />
+      < UserView userBooks={props.userBooks} />
     </div>
   )
 
