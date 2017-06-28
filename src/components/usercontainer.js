@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 import UserView from './UserView'
-import BooksContainer from './BooksContainer'
 
 
 export default function UserContainer (props) {
