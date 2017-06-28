@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import LoginForm from './LoginForm'
 import UserContainer from './UserContainer'
-import BooksContainer from './BooksContainer'
+// import BooksContainer from './BooksContainer'
 import {BooksAdapter} from '../adapters'
 import NavBar from './NavBar'
+import BooksList from './BooksList'
 
 class Main extends Component {
   constructor(){
@@ -18,6 +19,7 @@ class Main extends Component {
       userBooks: []
     }
     this.logIn = this.logIn.bind(this)
+    this.addUserBook = this.addUserBook.bind(this)
   }
 
   logIn(loginParams){
@@ -25,12 +27,14 @@ class Main extends Component {
       auth: {
         isLoggedIn: true,
         user: {loginParams}
-    }})
+        }
+      }
+    )
   }
 
   currentUser(){
     if (this.state.auth.isLoggedIn){
-      return this.state.loginParams.user.username
+      return this.state.user.loginParams.username
     }
   }
 
@@ -39,11 +43,22 @@ class Main extends Component {
       .then( data => this.setState({
         books: data
       }))
-    BooksAdapter.userBooks(3)
+
+    BooksAdapter.fetchUserBooks(3)
       .then((data) => this.setState({
         userBooks: data.books
       })
     )
+  }
+
+  addUserBook(userbook){
+    BooksAdapter.addUserBook(userbook)
+    .then( userbook => this.setState( (previousState) => {
+      return {
+        userBooks: [...previousState.userBooks, userbook]
+      }
+    })
+  )
   }
 
   welcomeToggle(){
@@ -60,7 +75,8 @@ class Main extends Component {
         <NavBar style='inverse'/>
         <h2>{this.welcomeToggle()}</h2>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn}/>} />
-        <Route path='/home' render={() =>< UserContainer userBooks={this.state.userBooks} /> } />
+        <Route path='/home' render={() => < UserContainer userBooks={this.state.userBooks} /> } />
+        <Route path='/books' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
       </div>
     )
   }

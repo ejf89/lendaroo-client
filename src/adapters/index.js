@@ -10,13 +10,25 @@ export class BooksAdapter {
     .then( res => res.json() )
   }
 
-  static userBooks(id){
+  static fetchUserBooks(id){
       return fetch(`${baseUrl}/users/${id}`,{
         headers: headers()
       }
     )
     .then(res => res.json() )
-    // .then(console.log)
+  }
+
+  static addUserBook(userbook){
+
+    return fetch(`${baseUrl}/userbooks`, {
+      method: 'POST',
+      headers: headers(),
+      body: JSON.stringify({
+        userbook: userbook
+      })
+    })
+    .then( res => res.json())
+    .then(console.log)
   }
 
   static url(){
