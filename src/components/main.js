@@ -24,7 +24,7 @@ class Main extends Component {
     this.logIn = this.logIn.bind(this)
     this.addUserBook = this.addUserBook.bind(this)
     this.fireSearch = this.fireSearch.bind(this)
-    this.createLocalBook = this.createLocalBook.bind(this)
+    this.createLocalBooks = this.createLocalBooks.bind(this)
   }
 
   logIn(loginParams){
@@ -66,8 +66,18 @@ class Main extends Component {
     )
   }
 
-  createLocalBook(gBook){
-    GoogleAdapter.createLocalBook(gBook)
+  createLocalBooks(){
+    const reshapedBooks = this.state.stagedForLocalStorage.map( gBook => {
+      return {
+        title: gBook.volumeInfo.title,
+        author: gBook.volumeInfo.authors[0],
+        description: gBook.searchInfo.textSnippet,
+        image_url: gBook.volumeInfo.imageLinks.thumbnail,
+        rating: gBook.volumeInfo.averageRating}
+    })
+    let arrayMaybe = GoogleAdapter.createLocalBooks(reshapedBooks)
+    debugger
+    //add to books state here
   }
 
   fireSearch(searchTerm){
@@ -75,7 +85,6 @@ class Main extends Component {
     .then( res => this.setState({
       searchResults: res.items
     }))
-
   }
 
   welcomeToggle(){
@@ -94,7 +103,7 @@ class Main extends Component {
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn}/>} />
         <Route path='/home' render={() => < UserContainer userBooks={this.state.userBooks} /> } />
         <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
-        <Route path='/search' render={() =>  <GoogleSearch onCreate={this.createLocalBook} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults}/> } />
+        <Route path='/search' render={() =>  <GoogleSearch onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults}/> } />
       </div>
     )
   }
