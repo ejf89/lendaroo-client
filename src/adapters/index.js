@@ -44,9 +44,21 @@ export class GoogleAdapter{
     .then(res => res.json() )
   }
 
-  static createLocalBook(gBook){
-    return console.log('creating!')
+  static createLocalBooks(reshapedBooks){
+    const addedBooks = reshapedBooks.map( book => {
+      return fetch(`${baseUrl}/books`, {
+        method: 'POST',
+        headers: headers(),
+        body: JSON.stringify({
+           book: book
+        })
+      })
+      .then(console.log(book))
+      .then( res => res.json())
+    })
+    debugger
   }
+
 }
 
 function headers(){
