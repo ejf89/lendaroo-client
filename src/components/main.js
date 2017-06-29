@@ -77,9 +77,10 @@ class Main extends Component {
     })
       GoogleAdapter.createLocalBooks(reshapedBooks)
         .then( (books) => {
-          books.forEach( book => this.setState( (previousState) =>{
-            return{
-              books: [...previousState.books, book]
+          books.forEach( book => this.setState( (previousState) => {
+            return {
+              books: [...previousState.books, book],
+              userBooks: [...previousState.books, book]
             }
           }
         )
