@@ -5,8 +5,8 @@ export default function GoogleResult (props) {
   const { thumbnail } = props.result.volumeInfo.imageLinks
 
   return(
-    <div className="googleBook">
-      <img src={thumbnail} />
+    <div className="googleBook" id={props.result.id} onClick={props.handleClick}>
+      <img src={thumbnail} alt={title} />
     </div>
   )
 }

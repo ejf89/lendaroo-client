@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+#g-search{
+  padding-bottom: 20px;
+}
+
+.googleBook.selected{
+  opacity: 0.5
+}
+
 
 
 @keyframes App-logo-spin {

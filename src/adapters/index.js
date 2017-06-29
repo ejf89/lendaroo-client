@@ -42,9 +42,10 @@ export class GoogleAdapter{
       }
     )
     .then(res => res.json() )
-    // .then(res => {
-    //   debugger
-    // })
+  }
+
+  static createLocalBook(gBook){
+    return console.log('creating!')
   }
 }
 
