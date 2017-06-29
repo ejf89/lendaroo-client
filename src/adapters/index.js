@@ -45,18 +45,14 @@ export class GoogleAdapter{
   }
 
   static createLocalBooks(reshapedBooks){
-    const addedBooks = reshapedBooks.map( book => {
       return fetch(`${baseUrl}/books`, {
         method: 'POST',
         headers: headers(),
         body: JSON.stringify({
-           book: book
+           books: reshapedBooks
         })
       })
-      .then(console.log(book))
       .then( res => res.json())
-    })
-    debugger
   }
 
 }
