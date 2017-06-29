@@ -75,9 +75,18 @@ class Main extends Component {
         image_url: gBook.volumeInfo.imageLinks.thumbnail,
         rating: gBook.volumeInfo.averageRating}
     })
-    let arrayMaybe = GoogleAdapter.createLocalBooks(reshapedBooks)
-    debugger
-    //add to books state here
+      GoogleAdapter.createLocalBooks(reshapedBooks)
+        .then( (books) => {
+          books.forEach( book => this.setState( (previousState) =>{
+            return{
+              books: [...previousState.books, book]
+            }
+          }
+        )
+      )
+      alert(`${books.length} books added to your collection!`)
+    }
+    )
   }
 
   fireSearch(searchTerm){
