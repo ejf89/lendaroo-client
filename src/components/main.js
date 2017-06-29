@@ -18,11 +18,13 @@ class Main extends Component {
       },
       books: [],
       userBooks: [],
-      searchResults: []
+      searchResults: [],
+      stagedForLocalStorage: []
     }
     this.logIn = this.logIn.bind(this)
     this.addUserBook = this.addUserBook.bind(this)
     this.fireSearch = this.fireSearch.bind(this)
+    this.createLocalBook = this.createLocalBook.bind(this)
   }
 
   logIn(loginParams){
@@ -54,15 +56,18 @@ class Main extends Component {
     )
   }
 
-//this function is adding the wrong object!!
   addUserBook(userbook){
     BooksAdapter.addUserBook(userbook)
     .then( newBook => this.setState( (previousState) => {
       return {
         userBooks: [...previousState.userBooks, newBook]
-      }
-    })
-  )
+        }
+      })
+    )
+  }
+
+  createLocalBook(gBook){
+    GoogleAdapter.createLocalBook(gBook)
   }
 
   fireSearch(searchTerm){
@@ -83,13 +88,13 @@ class Main extends Component {
 
   render(){
     return(
-      <div>
+      <div className="container">
         <NavBar />
         <h2>{this.welcomeToggle()}</h2>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn}/>} />
         <Route path='/home' render={() => < UserContainer userBooks={this.state.userBooks} /> } />
         <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
-        <Route path='/search' render={() =>  <GoogleSearch fireSearch={this.fireSearch} searchResults={this.state.searchResults}/> } />
+        <Route path='/search' render={() =>  <GoogleSearch onCreate={this.createLocalBook} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults}/> } />
       </div>
     )
   }
