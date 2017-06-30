@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, browserHistory, withRouter } from 'react-router-dom'
 import LoginForm from './LoginForm'
 import UserContainer from './UserContainer'
 // import BooksContainer from './BooksContainer'
-import {BooksAdapter, GoogleAdapter} from '../adapters'
+import {BooksAdapter, GoogleAdapter, AuthAdapter} from '../adapters'
 import NavBar from './NavBar'
 import BooksList from './BooksList'
 import GoogleSearch from './GoogleSearch'
@@ -13,8 +13,8 @@ class Main extends Component {
     super()
     this.state ={
       auth: {
-        isLoggedIn :true,
-        user: {username: "mustafa", password: "pw"}
+        isLoggedIn :false,
+        user: {}
       },
       books: [],
       userBooks: [],
@@ -28,13 +28,16 @@ class Main extends Component {
   }
 
   logIn(loginParams){
-    this.setState({
-      auth: {
-        isLoggedIn: true,
-        user: {loginParams}
-        }
+    AuthAdapter.logIn(loginParams)
+    .then( user => {
+      if (!user.error) {
+        this.setState({
+          auth: {isLoggedIn: true, user: user}
+        })
+        localStorage.setItem('user_id', user.id)
+        this.props.history.push(`/home`) //change this to custom slugs
       }
-    )
+    })
   }
 
   currentUser(){
@@ -44,15 +47,29 @@ class Main extends Component {
   }
 
   componentDidMount(){
-    BooksAdapter.all()
-      .then( data => this.setState({
-        books: data
-      }))
-
-    BooksAdapter.fetchUserBooks(3) //change to current user id
-      .then((data) => this.setState({
-        userBooks: data.books
-      })
+    if (localStorage.getItem('user_id')) {
+      let user_id = parseInt(localStorage.getItem('user_id'), 10)
+      AuthAdapter.currentUser(user_id)
+      .then( user => this.setState({
+        auth: {
+          isLoggedIn: true,
+          user: user
+        }
+      }
+    ))
+      BooksAdapter.fetchUserBooks(user_id) //change to current user id
+        .then((data) => this.setState({
+          userBooks: data.books
+        })
+      )
+    } else {
+      this.props.history.push('/login')
+    }
+      BooksAdapter.all()
+        .then( data => this.setState({
+          books: data
+        }
+      )
     )
   }
 
@@ -88,6 +105,9 @@ class Main extends Component {
       alert(`${books.length} books added to your collection!`)
     }
     )
+    .then( () => this.setState({
+      stagedForLocalStorage: []
+    }))
   }
 
   fireSearch(searchTerm){
@@ -119,4 +139,4 @@ class Main extends Component {
   }
 }
 
-export default Main
+export default withRouter(Main)
