@@ -3,10 +3,14 @@ import { Route, browserHistory, withRouter } from 'react-router-dom'
 import LoginForm from './LoginForm'
 import UserContainer from './UserContainer'
 // import BooksContainer from './BooksContainer'
-import {BooksAdapter, GoogleAdapter, AuthAdapter} from '../adapters'
+import AuthAdapter from '../adapters/AuthAdapter'
+import GoogleAdapter from '../adapters/GoogleAdapter'
+import BooksAdapter from '../adapters/BooksAdapter'
+import UserAdapter from '../adapters/UserAdapter'
 import NavBar from './NavBar'
 import BooksList from './BooksList'
 import GoogleSearch from './GoogleSearch'
+
 
 class Main extends Component {
   constructor(){
@@ -25,17 +29,15 @@ class Main extends Component {
     this.addUserBook = this.addUserBook.bind(this)
     this.fireSearch = this.fireSearch.bind(this)
     this.createLocalBooks = this.createLocalBooks.bind(this)
+    this.createUser = this.createUser.bind(this)
+    this.setUser = this.setUser.bind(this)
   }
 
   logIn(loginParams){
     AuthAdapter.logIn(loginParams)
     .then( user => {
       if (!user.error) {
-        this.setState({
-          auth: {isLoggedIn: true, user: user}
-        })
-        localStorage.setItem('user_id', user.id)
-        this.props.history.push(`/home`) //change this to custom slugs
+        this.setUser(user)
       }
     })
   }
@@ -45,6 +47,21 @@ class Main extends Component {
       return this.state.user.loginParams.username
     }
   }
+
+  createUser(userParams){
+    console.log('sending into to backend...')
+    UserAdapter.createUser(userParams)
+    .then( user => this.setUser(user))
+  }
+
+  setUser(user){
+      this.setState({
+        auth: {isLoggedIn: true, user: user}
+      })
+      localStorage.setItem('user_id', user.id)
+      this.props.history.push(`/home`) //change this to custom slugs
+  }
+
 
   componentDidMount(){
     if (localStorage.getItem('user_id')) {
@@ -130,7 +147,7 @@ class Main extends Component {
       <div className="container">
         <NavBar />
         <h2>{this.welcomeToggle()}</h2>
-        <Route path='/login' render={() => <LoginForm onSubmit={this.logIn}/>} />
+        <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>} />
         <Route path='/home' render={() => < UserContainer userBooks={this.state.userBooks} /> } />
         <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
         <Route path='/search' render={() =>  <GoogleSearch onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults}/> } />
