@@ -31,8 +31,28 @@
   font-style: bold;
 }
 
-#userBio {
-   /*border: 2px dashed #f69c55;*/
+.book{
+  display: flex;
+  /*object-fit: cover;*/
+  justify-content: center;
+  align-items: center;
+  min-width: auto;
+  height: 100%;
+  border: 2px dashed #f69c55;
+}
+
+.bookCover {
+  display: flex;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
+#myBookList{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #76ff91;
+  height: 1.em;
 }
 
 #userBio p {

@@ -2,6 +2,8 @@ import React from 'react'
 import Book from './Book'
 
 export default function UserView (props) {
+
+
   return(
     <div>
       <div  className="row" >
@@ -14,9 +16,21 @@ export default function UserView (props) {
         </div>
 
       </div>
-      <h3>My Books</h3>
-      <div id="myBookList" className="row">
-        {props.userBooks.map( book => <Book book={book} />  )}
+
+      <div className="row">
+        <div className="col-md-1">
+        </div>
+        <div className="col-md-4">
+          <h3>My Books</h3>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-md-6">
+            <div id="myBookList" className="row">
+            {props.userBooks.map( book => <Book book={book} />  )}
+          </div>
+        </div>
       </div>
     </div>
 
