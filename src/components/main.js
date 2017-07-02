@@ -73,11 +73,15 @@ class Main extends Component {
         }
       }
     ))
-      BooksAdapter.fetchUserBooks(user_id) //change to current user id
+    .then( () => {
+      console.log(this.state.auth.user)
+      BooksAdapter.fetchUserBooks(this.state.auth.user.id)
         .then((data) => this.setState({
           userBooks: data.books
         })
       )
+    } )
+
     } else {
       this.props.history.push('/login')
     }
@@ -91,6 +95,7 @@ class Main extends Component {
 
   addUserBook(userbook){
     BooksAdapter.addUserBook(userbook)
+    .then(() => {debugger})
     .then( newBook => this.setState( (previousState) => {
       return {
         userBooks: [...previousState.userBooks, newBook]
@@ -102,18 +107,18 @@ class Main extends Component {
   createLocalBooks(){
     const reshapedBooks = this.state.stagedForLocalStorage.map( gBook => {
       return {
-        title: gBook.volumeInfo.title,
-        author: gBook.volumeInfo.authors[0],
-        description: gBook.searchInfo.textSnippet,
+        title: gBook.volumeInfo.title ? gBook.volumeInfo.title : "TITLE MISSING",
+        author: gBook.volumeInfo.authors ? gBook.volumeInfo.authors[0] : "Author Missing",
+        description: gBook.searchInfo.textSnippet ? gBook.searchInfo.textSnippet : "No description",
         image_url: gBook.volumeInfo.imageLinks.thumbnail,
-        rating: gBook.volumeInfo.averageRating}
+        rating: gBook.volumeInfo.averageRating ? gBook.volumeInfo.averageRating : 5}
     })
       GoogleAdapter.createLocalBooks(reshapedBooks)
         .then( (books) => {
           books.forEach( book => this.setState( (previousState) => {
             return {
               books: [...previousState.books, book],
-              userBooks: [...previousState.books, book]
+              userBooks: [...previousState.userBooks, book]
             }
           }
         )

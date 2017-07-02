@@ -20,7 +20,6 @@ export default class GoogleAdapter{
       })
       .then( res => res.json())
   }
-
 }
 
 function headers(){
