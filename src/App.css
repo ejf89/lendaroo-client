@@ -36,7 +36,7 @@
   /*object-fit: cover;*/
   justify-content: center;
   align-items: center;
-  min-width: auto;
+  width: auto;
   height: 100%;
   border: 2px dashed #f69c55;
 }
@@ -48,11 +48,20 @@
   height: auto;
 }
 
+/*#bookGallery{
+  height: 100px;
+  border: 5px;
+
+}*/
+
 #myBookList{
   display: flex;
   flex-wrap: wrap;
+  border-style: solid;
+  border-color: #ff0000;
   background-color: #76ff91;
-  height: 1.em;
+  max-height: 400px;
+  overflow-y: scroll;
 }
 
 #userBio p {
