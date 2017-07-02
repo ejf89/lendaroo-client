@@ -1,5 +1,4 @@
 const baseUrl = 'http://localhost:3000/api/v1'
-const googleUrl = 'https://www.googleapis.com/books/v1/volumes?q='
 
 export default class AuthAdapter {
   static logIn(loginParams){

@@ -1,6 +1,5 @@
 const baseUrl = 'http://localhost:3000/api/v1'
 
-
 export default class UserAdapter {
   static createUser(userParams){
     return fetch(`${baseUrl}/users`, {
@@ -19,7 +18,6 @@ export default class UserAdapter {
     })
     .then( response => response.json() )
   }
-
 }
 
 function headers(){

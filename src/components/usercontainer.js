@@ -4,10 +4,9 @@ import UserView from './UserView'
 
 export default function UserContainer (props) {
 
-
   return(
     <div>
-      < UserView userBooks={props.userBooks} />
+      < UserView user={props.user} userBooks={props.userBooks} />
     </div>
   )
 

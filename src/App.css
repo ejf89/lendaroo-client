@@ -10,19 +10,10 @@
   opacity: 0.5
 }
 
-
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-
 .navbar .nav {
   margin: 0;
   display: table;
   width: 100%;
-  /*padding-bottom: 15px;*/
   background-color: black;
 }
 
@@ -38,4 +29,19 @@
   font-size: 100%;
   font-weight: 200;
   font-style: bold;
+}
+
+#userBio {
+   /*border: 2px dashed #f69c55;*/
+}
+
+#userBio p {
+  font-style: italic;
+  margin: 14% 25% 0 0;
+  border: 2px dashed #f69c55;
+}
+
+#userPic{
+  width: 70%;
+  height: auto;
 }

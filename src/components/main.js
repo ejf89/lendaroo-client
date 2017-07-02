@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, browserHistory, withRouter } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import LoginForm from './LoginForm'
 import UserContainer from './UserContainer'
 // import BooksContainer from './BooksContainer'
@@ -10,7 +10,6 @@ import UserAdapter from '../adapters/UserAdapter'
 import NavBar from './NavBar'
 import BooksList from './BooksList'
 import GoogleSearch from './GoogleSearch'
-
 
 class Main extends Component {
   constructor(){
@@ -134,21 +133,20 @@ class Main extends Component {
     }))
   }
 
-  welcomeToggle(){
-    if (this.state.auth.isLoggedIn) {
-      return this.state.auth.user.username
-    } else {
-      return "Welcome to Lendaroo"
-    }
-  }
+  // welcomeToggle(){
+  //   if (this.state.auth.isLoggedIn) {
+  //     return this.state.auth.user.username
+  //   } else {
+  //     return "Welcome to Lendaroo"
+  //   }
+  // }
 
   render(){
     return(
       <div className="container">
         <NavBar />
-        <h2>{this.welcomeToggle()}</h2>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>} />
-        <Route path='/home' render={() => < UserContainer userBooks={this.state.userBooks} /> } />
+        <Route path='/home' render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} /> } />
         <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
         <Route path='/search' render={() =>  <GoogleSearch onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults}/> } />
       </div>
