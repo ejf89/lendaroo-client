@@ -149,9 +149,9 @@ class Main extends Component {
   render(){
     return(
       <div className="container">
-        <NavBar />
+        <NavBar username={this.state.auth.user.username}/>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>} />
-        <Route path='/home' render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} /> } />
+        <Route path={`/${this.state.auth.user.username}`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} /> } />
         <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
         <Route path='/search' render={() =>  <GoogleSearch onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults}/> } />
       </div>
