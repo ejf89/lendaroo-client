@@ -18,12 +18,12 @@ export default class BooksAdapter {
     .then(res => res.json() )
   }
 
-  static addUserBook(userbook){
+  static addUserBook(userbookArr){
     return fetch(`${baseUrl}/userbooks`, {
       method: 'POST',
       headers: headers(),
       body: JSON.stringify({
-        userbook: userbook
+        userbook: userbookArr
       })
     })
     .then( res => res.json())

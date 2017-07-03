@@ -1,8 +1,7 @@
 import React from 'react'
 
 export default function BookDetail (props) {
-
-  if (props.book.title !== undefined){
+  if (props.book.id !== undefined){
     const { title, image_url, id, description } = props.book
     return(
       <div id={id} className="bookDetailView">
@@ -14,6 +13,6 @@ export default function BookDetail (props) {
 
     )
   } else {
-    return null
+    return (null)
   }
 }

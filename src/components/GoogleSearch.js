@@ -46,7 +46,7 @@ export default class GoogleSearch extends Component{
   render(){
     return(
       <div>
-        <h1>Search Dem Gyoogal</h1>
+        <h1>Search Google</h1>
         <button onClick={this.props.onCreate} className="btn btn-primary">Add Selections!</button>
         <div id="g-search" className="input-group">
             <input type="text" className="form-control" name="searchTerm" onChange={this.handleChange} value={this.state.searchTerm} placeholder="Search Books to Add to your collection!" />
