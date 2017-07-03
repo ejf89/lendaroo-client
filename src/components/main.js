@@ -101,8 +101,8 @@ class Main extends Component {
     )
   }
 
-  addUserBook(userbook){
-    BooksAdapter.addUserBook(userbook)
+  addUserBook(userbookArr){
+    BooksAdapter.addUserBook(userbookArr)
     .then(() => {debugger})
     .then( newBook => this.setState( (previousState) => {
       return {
@@ -114,10 +114,11 @@ class Main extends Component {
 
   createLocalBooks(){
     const reshapedBooks = this.state.stagedForLocalStorage.map( gBook => {
+      debugger
       return {
         title: gBook.volumeInfo.title ? gBook.volumeInfo.title : "TITLE MISSING",
         author: gBook.volumeInfo.authors ? gBook.volumeInfo.authors[0] : "Author Missing",
-        description: gBook.searchInfo.textSnippet ? gBook.searchInfo.textSnippet : "No description",
+        description: gBook.searchInfo ? gBook.searchInfo.textSnippet : "No description",
         image_url: gBook.volumeInfo.imageLinks.thumbnail,
         rating: gBook.volumeInfo.averageRating ? gBook.volumeInfo.averageRating : 5}
     })
@@ -133,10 +134,13 @@ class Main extends Component {
       )
       alert(`${books.length} books added to your collection!`)
     }
+
     )
     .then( () => this.setState({
       stagedForLocalStorage: []
     }))
+
+    // BooksAdapter.addUserBook(reshapedBooks)
   }
 
   fireSearch(searchTerm){
@@ -164,18 +168,26 @@ class Main extends Component {
         selectedBook: {}
       })
     })
+    this.props.history.replace(" ")
   }
 
   setSelectedBook(e){
     let bookId = parseInt(e.target.id, 10)
     let booksArr = this.state.books
     let findBook = book => book.id === bookId
+    let username = this.state.auth.user.username
 
     let selectedBook = booksArr.find(findBook)
     this.setState({
       selectedBook: selectedBook
     })
-    this.props.history.push(`${bookId}`)
+
+    if(!this.props.history.location.pathname.includes(username)){
+      this.props.history.push(`/${username}/${bookId}`)
+    } else {
+      this.props.history.push(`/${username}/${bookId}`)
+    }
+
   }
 
   render(){
@@ -184,13 +196,15 @@ class Main extends Component {
         <NavBar username={this.state.auth.user.username}/>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>} />
         <Switch>
-          <Route exact path={`/${this.state.auth.user.username}`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} /> } />
+          <Route path={`/${this.state.auth.user.username}`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook} /> } />
+
           <Route exact path={`/${this.state.auth.user.username}/:id`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook} /> } />
 
 
         </Switch>
         <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
-        <Route path='/search' render={() =>  <GoogleSearch onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults}/> } />
+        <Route path='/search' render={() =>  <GoogleSearch onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults}
+          addUserBook={this.addUserBook}/> } />
       </div>
     )
   }

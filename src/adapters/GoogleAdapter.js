@@ -11,9 +11,14 @@ export default class GoogleAdapter{
   }
 
   static createLocalBooks(reshapedBooks){
+    console.log("in google")
       return fetch(`${baseUrl}/books`, {
         method: 'POST',
-        headers: headers(),
+        headers: {
+          'content-type': 'application/json',
+          'accept': 'application/json',
+          'Authorization': localStorage.getItem('user_id')
+        },
         body: JSON.stringify({
            books: reshapedBooks
         })
