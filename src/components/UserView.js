@@ -35,7 +35,7 @@ export default function UserView (props) {
             </div>
         </div>
         <div className="col-md-6">
-          < BookDetail book={props.detailBook}/>
+          < BookDetail book={props.detailBook} deleteUserBook={props.deleteUserBook}/>
         </div>
       </div>
     </div>

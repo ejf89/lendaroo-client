@@ -21,6 +21,7 @@ class Main extends Component {
       },
       books: [],
       userBooks: [],
+      railsUserBooks: [],
       searchResults: [],
       stagedForLocalStorage: [],
       selectedBook: {}
@@ -32,6 +33,7 @@ class Main extends Component {
     this.createUser = this.createUser.bind(this)
     this.setUser = this.setUser.bind(this)
     this.setSelectedBook = this.setSelectedBook.bind(this)
+    this.deleteUserBook = this.deleteUserBook.bind(this)
   }
 
   logIn(loginParams){
@@ -76,7 +78,11 @@ class Main extends Component {
       }
     ))
     .then( () => {
-      console.log(this.state.auth.user)
+      BooksAdapter.getRailsUserBooks()
+        .then( data => this.setState({
+          railsUserBooks: data
+        }))
+
       BooksAdapter.fetchUserBooks(this.state.auth.user.id)
         .then((data) => this.setState({
           userBooks: data.books
@@ -140,6 +146,26 @@ class Main extends Component {
     }))
   }
 
+  deleteUserBook(e){
+    e.preventDefault()
+    let bookId = parseInt(e.target.parentElement.id, 10)
+    let userId = this.state.auth.user.id
+    let rubyUserBooksArray = this.state.railsUserBooks
+
+    let findUserBook = ub => ub.book_id === bookId && ub.user_id === userId
+    let backEndBook = rubyUserBooksArray.find(findUserBook)
+
+    BooksAdapter.deleteUserBook(backEndBook)
+    .then( res => {
+      let bookId = res.book_id
+      let filteredLocalUserBooks = this.state.userBooks.filter( book => book.id !== bookId)
+      this.setState({
+        userBooks: filteredLocalUserBooks,
+        selectedBook: {}
+      })
+    })
+  }
+
   setSelectedBook(e){
     let bookId = parseInt(e.target.id, 10)
     let booksArr = this.state.books
@@ -152,22 +178,15 @@ class Main extends Component {
     this.props.history.push(`${bookId}`)
   }
 
-  // welcomeToggle(){
-  //   if (this.state.auth.isLoggedIn) {
-  //     return this.state.auth.user.username
-  //   } else {
-  //     return "Welcome to Lendaroo"
-  //   }
-  // }
-
   render(){
     return(
       <div className="container">
         <NavBar username={this.state.auth.user.username}/>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>} />
         <Switch>
-          <Route exact path={`/${this.state.auth.user.username}/:id`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} setBook={this.setSelectedBook} detailBook={this.state.selectedBook}/> } />
           <Route exact path={`/${this.state.auth.user.username}`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} /> } />
+          <Route exact path={`/${this.state.auth.user.username}/:id`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook} /> } />
+
 
         </Switch>
         <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
