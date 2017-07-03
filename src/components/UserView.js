@@ -1,6 +1,7 @@
 import React from 'react'
 import Book from './Book'
 import BookNav from './BookNav'
+import BookDetail from './BookDetail'
 
 export default function UserView (props) {
 
@@ -30,8 +31,11 @@ export default function UserView (props) {
       <div className="row">
         <div id="bookGallery" className="col-md-6">
             <div id="myBookList" className="row">
-            {props.userBooks.map( book => <Book book={book} />  )}
-          </div>
+              {props.userBooks.map( book => <Book book={book} setBook={props.setBook}/>  )}
+            </div>
+        </div>
+        <div className="col-md-6">
+          < BookDetail book={props.detailBook}/>
         </div>
       </div>
     </div>

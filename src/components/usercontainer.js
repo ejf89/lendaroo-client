@@ -6,8 +6,7 @@ export default function UserContainer (props) {
 
   return(
     <div>
-      < UserView user={props.user} userBooks={props.userBooks} />
-    </div>
+      < UserView user={props.user} userBooks={props.userBooks} detailBook={props.detailBook} setBook={props.setBook} /> </div>
   )
 
 }
