@@ -1,10 +1,9 @@
 import React from 'react'
+import CrudButtons from './CrudButtons'
 
 export default function BookDetail (props) {
   if (props.book.id !== undefined){
     const { title, image_url, id, description } = props.book
-
-    const ButtonToggle = <button className="btn btn-primary" onClick={props.deleteUserBook}>Delete from ur collecton</button>
 
     return(
       <div id={id} className="bookDetailView">
@@ -12,7 +11,7 @@ export default function BookDetail (props) {
         <p>{title}</p>
         <p>{description}</p>
 
-        {ButtonToggle}
+        <CrudButtons book={props.book} inCollection={props.inCollection} deleteUserBook={props.deleteUserBook} addUserBook={props.addUserBook}/>
 
       </div>
 
