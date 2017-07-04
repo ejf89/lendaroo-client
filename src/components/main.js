@@ -103,7 +103,6 @@ class Main extends Component {
 
   addUserBook(userbookArr){
     BooksAdapter.addUserBook(userbookArr)
-    .then(() => {debugger})
     .then( newBook => this.setState( (previousState) => {
       return {
         userBooks: [...previousState.userBooks, newBook]
@@ -114,7 +113,6 @@ class Main extends Component {
 
   createLocalBooks(){
     const reshapedBooks = this.state.stagedForLocalStorage.map( gBook => {
-      debugger
       return {
         title: gBook.volumeInfo.title ? gBook.volumeInfo.title : "TITLE MISSING",
         author: gBook.volumeInfo.authors ? gBook.volumeInfo.authors[0] : "Author Missing",
@@ -134,14 +132,14 @@ class Main extends Component {
       )
       alert(`${books.length} books added to your collection!`)
     }
-
     )
     .then( () => this.setState({
       stagedForLocalStorage: []
-    }))
-
-    // BooksAdapter.addUserBook(reshapedBooks)
+        }
+      )
+    )
   }
+
 
   fireSearch(searchTerm){
     GoogleAdapter.searchBooks(searchTerm)
@@ -185,25 +183,33 @@ class Main extends Component {
     if(!this.props.history.location.pathname.includes(username)){
       this.props.history.push(`/${username}/${bookId}`)
     } else {
+      console.log("triggered the right one")
+      console.log(this.props.history)
       this.props.history.push(`/${username}/${bookId}`)
+      console.log(this.props.history)
     }
 
   }
 
   render(){
+
     return(
       <div className="container">
         <NavBar username={this.state.auth.user.username}/>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>} />
         <Switch>
-          <Route path={`/${this.state.auth.user.username}`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook} /> } />
+
+          <Route exact path={`/${this.state.auth.user.username}`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook} /> } />
+
+          <Route exact path={`/${this.state.auth.user.username}/browse`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.books} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook} /> } />
 
           <Route exact path={`/${this.state.auth.user.username}/:id`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook} /> } />
 
 
         </Switch>
         <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
-        <Route path='/search' render={() =>  <GoogleSearch onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults}
+
+        <Route path='/search' render={() =>  <GoogleSearch localBooks={this.state.books} onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults}
           addUserBook={this.addUserBook}/> } />
       </div>
     )
