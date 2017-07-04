@@ -11,7 +11,7 @@ export default function BookDetail (props) {
         <p>{title}</p>
         <p>{description}</p>
 
-        <CrudButtons book={props.book} inCollection={props.inCollection} deleteUserBook={props.deleteUserBook} addUserBook={props.addUserBook}/>
+        <CrudButtons book={props.book} inCollection={props.inCollection} deleteUserBook={props.deleteUserBook} addUserBook={props.addUserBook} usersWithSelectedBook={props.usersWithSelectedBook}/>
 
       </div>
 

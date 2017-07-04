@@ -25,7 +25,9 @@ class Main extends Component {
       searchResults: [],
       stagedForLocalStorage: [],
       selectedBook: {},
-      inCollection: false
+      inCollection: false,
+      users: [],
+      usersWithBook: []
     }
     this.logIn = this.logIn.bind(this)
     this.addUserBook = this.addUserBook.bind(this)
@@ -36,6 +38,7 @@ class Main extends Component {
     this.setSelectedBook = this.setSelectedBook.bind(this)
     this.deleteUserBook = this.deleteUserBook.bind(this)
     this.addUserBook = this.addUserBook.bind(this)
+    this.usersWithSelectedBook = this.usersWithSelectedBook.bind(this)
   }
 
   logIn(loginParams){
@@ -77,19 +80,25 @@ class Main extends Component {
           user: user
         }
       }
-    ))
-    .then( () => {
-      BooksAdapter.getRailsUserBooks()
-        .then( data => this.setState({
-          railsUserBooks: data
-        }))
+      ))
+      .then( () => {
+        BooksAdapter.getRailsUserBooks()
+          .then( data => this.setState({
+            railsUserBooks: data
+          }))
 
-      BooksAdapter.fetchUserBooks(this.state.auth.user.id)
-        .then((data) => this.setState({
-          userBooks: data.books
-        })
-      )
-    } )
+        BooksAdapter.fetchUserBooks(this.state.auth.user.id)
+          .then((data) => this.setState({
+            userBooks: data.books
+          })
+        )
+      } )
+      .then( () => {
+        UserAdapter.all()
+        .then( users => this.setState({
+          users: users
+        }) )
+      })
 
     } else {
       this.props.history.push('/login')
@@ -102,6 +111,7 @@ class Main extends Component {
     )
   }
 
+
   addUserBook(e){
     e.preventDefault()
     BooksAdapter.addUserBook(this.state.selectedBook)
@@ -111,6 +121,10 @@ class Main extends Component {
         }
       })
     )
+    .then( () => BooksAdapter.getRailsUserBooks()
+      .then( data => this.setState({
+        railsUserBooks: data
+      })))
     alert('Added!')
   }
 
@@ -197,6 +211,8 @@ class Main extends Component {
       })
     }
 
+    this.usersWithSelectedBook()
+
     if(!this.props.history.location.pathname.includes(username)){
       this.props.history.push(`/${username}/${bookId}`)
     } else if (this.props.history.location.pathname.includes(username + '/browse')) {
@@ -204,6 +220,20 @@ class Main extends Component {
     } else {
       this.props.history.push(`/${username}/${bookId}`)
     }
+
+  }
+
+  usersWithSelectedBook(){
+    let filteredUserBooks = this.state.railsUserBooks.filter( userBook => userBook.book_id === this.state.selectedBook.id )
+    let usersWithBook = filteredUserBooks.map( userBook => {
+      let users = this.state.users
+      let findUser = user => user.id === userBook.user_id
+      return users.find(findUser)
+    })
+
+    this.setState({
+      usersWithBook: usersWithBook
+    })
 
   }
 
@@ -215,7 +245,8 @@ class Main extends Component {
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>} />
 
         <Route path={`/${this.state.auth.user.username}`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} allBooks={this.state.books} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook}
-        addUserBook={this.addUserBook} inCollection={this.state.inCollection}/>} />
+        addUserBook={this.addUserBook} inCollection={this.state.inCollection}
+        usersWithSelectedBook={this.state.usersWithBook}/>} />
 
 
         <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />

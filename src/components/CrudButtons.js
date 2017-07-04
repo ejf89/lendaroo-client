@@ -9,8 +9,7 @@ export default function CrudButtons (props) {
     return  (
       <div>
       <button className="btn btn-primary" onClick={props.addUserBook}>Add to Your Collection</button>
-      <button className="btn btn-primary" onClick={props.deleteUserBook}>Send Lend Request</button>
-
+      {props.usersWithSelectedBook.map( user => <p>{user.username}</p>)}
       </div>
 
     )
