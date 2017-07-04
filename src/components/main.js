@@ -35,6 +35,7 @@ class Main extends Component {
     this.setUser = this.setUser.bind(this)
     this.setSelectedBook = this.setSelectedBook.bind(this)
     this.deleteUserBook = this.deleteUserBook.bind(this)
+    this.addUserBook = this.addUserBook.bind(this)
   }
 
   logIn(loginParams){
@@ -101,14 +102,16 @@ class Main extends Component {
     )
   }
 
-  addUserBook(userbookArr){
-    BooksAdapter.addUserBook(userbookArr)
+  addUserBook(e){
+    e.preventDefault()
+    BooksAdapter.addUserBook(this.state.selectedBook)
     .then( newBook => this.setState( (previousState) => {
       return {
         userBooks: [...previousState.userBooks, newBook]
         }
       })
     )
+    alert('Added!')
   }
 
   createLocalBooks(){
@@ -211,7 +214,8 @@ class Main extends Component {
         <NavBar username={this.state.auth.user.username}/>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>} />
 
-        <Route path={`/${this.state.auth.user.username}`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} allBooks={this.state.books} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook} inCollection={this.state.inCollection}/>} />
+        <Route path={`/${this.state.auth.user.username}`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} allBooks={this.state.books} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook}
+        addUserBook={this.addUserBook} inCollection={this.state.inCollection}/>} />
 
 
         <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
