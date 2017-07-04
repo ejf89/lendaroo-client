@@ -24,7 +24,8 @@ class Main extends Component {
       railsUserBooks: [],
       searchResults: [],
       stagedForLocalStorage: [],
-      selectedBook: {}
+      selectedBook: {},
+      inCollection: false
     }
     this.logIn = this.logIn.bind(this)
     this.addUserBook = this.addUserBook.bind(this)
@@ -37,7 +38,6 @@ class Main extends Component {
   }
 
   logIn(loginParams){
-    debugger
     AuthAdapter.logIn(loginParams)
     .then( user => {
       if (!user.error) {
@@ -138,8 +138,11 @@ class Main extends Component {
         }
       )
     )
+    .then( () => BooksAdapter.getRailsUserBooks() )
+    .then ( res => this.setState({
+      railsUserBooks: res
+    }))
   }
-
 
   fireSearch(searchTerm){
     GoogleAdapter.searchBooks(searchTerm)
@@ -174,19 +177,29 @@ class Main extends Component {
     let booksArr = this.state.books
     let findBook = book => book.id === bookId
     let username = this.state.auth.user.username
+    let userBookIds = this.state.userBooks.map( book => book.id)
 
     let selectedBook = booksArr.find(findBook)
     this.setState({
       selectedBook: selectedBook
     })
 
+    if (userBookIds.includes(selectedBook.id)){
+      this.setState({
+        inCollection: true
+      })
+    } else {
+      this.setState({
+        inCollection: false
+      })
+    }
+
     if(!this.props.history.location.pathname.includes(username)){
       this.props.history.push(`/${username}/${bookId}`)
+    } else if (this.props.history.location.pathname.includes(username + '/browse')) {
+        this.props.history.push(`/${username}/browse/${bookId}`)
     } else {
-      console.log("triggered the right one")
-      console.log(this.props.history)
       this.props.history.push(`/${username}/${bookId}`)
-      console.log(this.props.history)
     }
 
   }
@@ -197,16 +210,10 @@ class Main extends Component {
       <div className="container">
         <NavBar username={this.state.auth.user.username}/>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>} />
-        <Switch>
 
-          <Route exact path={`/${this.state.auth.user.username}`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook} /> } />
-
-          <Route exact path={`/${this.state.auth.user.username}/browse`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.books} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook} /> } />
-
-          <Route exact path={`/${this.state.auth.user.username}/:id`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook} /> } />
+        <Route path={`/${this.state.auth.user.username}`} render={() => < UserContainer user={this.state.auth.user} userBooks={this.state.userBooks} allBooks={this.state.books} setBook={this.setSelectedBook} detailBook={this.state.selectedBook} deleteUserBook={this.deleteUserBook} inCollection={this.state.inCollection}/>} />
 
 
-        </Switch>
         <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>} />
 
         <Route path='/search' render={() =>  <GoogleSearch localBooks={this.state.books} onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults}
