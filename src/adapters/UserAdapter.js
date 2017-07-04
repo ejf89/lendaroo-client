@@ -1,6 +1,15 @@
 const baseUrl = 'http://localhost:3000/api/v1'
 
 export default class UserAdapter {
+  static all(){
+    return fetch(`${baseUrl}/users`,{
+      headers: headers(),
+    }
+  )
+    .then( res => res.json() )
+  }
+
+
   static createUser(userParams){
     return fetch(`${baseUrl}/users`, {
       method: 'POST',
