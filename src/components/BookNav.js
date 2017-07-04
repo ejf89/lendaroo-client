@@ -6,7 +6,7 @@ const BookNav = (props) => (
     <nav className="navbar">
           <ul className="nav">
               <li><Link  className="nav-link" to={`/${props.username}`}>All My Books</Link></li>
-              <li><Link className="nav-link" to={`/${props.username}/search`}>Availabe Books!</Link></li>
+              <li><Link className="nav-link" to={`/${props.username}/browse`}>Availabe Books!</Link></li>
 
           </ul>
     </nav>
