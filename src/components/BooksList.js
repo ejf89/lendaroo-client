@@ -8,7 +8,7 @@ export default function BooksList (props) {
     <div>
       <h1>booklist</h1>
       <div id="booklist" className="row">
-        {props.books.map( book => <Book book={book} addUserBook={props.addUserBook} />  )}
+        {props.books.map( book => <Book book={book} addUserBook={props.addUserBook} setBook={props.setBook}/>  )}
       </div>
     </div>
   )

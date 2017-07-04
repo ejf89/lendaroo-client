@@ -2,9 +2,11 @@ import React from 'react'
 import Book from './Book'
 import BookNav from './BookNav'
 import BookDetail from './BookDetail'
+import BooksList from './BooksList'
+import { Route, Switch } from 'react-router-dom'
 
 export default function UserView (props) {
-
+  const { username } = props.user
   return(
     <div>
       <div  className="row" >
@@ -31,7 +33,7 @@ export default function UserView (props) {
       <div className="row">
         <div id="bookGallery" className="col-md-6">
             <div id="myBookList" className="row">
-              {props.userBooks.map( book => <Book book={book} setBook={props.setBook}/>  )}
+            < BooksList books={props.userBooks} setBook={props.setBook}/>
             </div>
         </div>
         <div className="col-md-6">

@@ -18,16 +18,16 @@ export default class BooksAdapter {
     .then(res => res.json() )
   }
 
-  static addUserBook(userbookArr){
-    return fetch(`${baseUrl}/userbooks`, {
-      method: 'POST',
-      headers: headers(),
-      body: JSON.stringify({
-        userbook: userbookArr
-      })
-    })
-    .then( res => res.json())
-  }
+  // static addUserBook(userbookArr){
+  //   return fetch(`${baseUrl}/userbooks`, {
+  //     method: 'POST',
+  //     headers: headers(),
+  //     body: JSON.stringify({
+  //       userbook: userbookArr
+  //     })
+  //   })
+  //   .then( res => res.json())
+  // }
 
   static getRailsUserBooks(){
       return fetch(`${baseUrl}/userbooks`, {
