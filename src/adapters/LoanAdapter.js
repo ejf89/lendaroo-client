@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:3000/api/v1'
 
-export default class BooksAdapter {
+export default class LoanAdapter {
   static all(){
     return fetch(`${this.url()}`, {
       headers: headers()
@@ -9,32 +9,20 @@ export default class BooksAdapter {
     .then( res => res.json() )
   }
 
-  static fetchUserBooks(id){
-      return fetch(`${baseUrl}/users/${id}`,{
-        headers: headers()
-      }
-    )
-    .then(res => res.json() )
-  }
-
-  static addUserBook(userbook){
-    return fetch(`${baseUrl}/userbooks`, {
+  static createLoan(giver_id, taker_id, book_id){
+    console.log("creating loan")
+    return fetch(`${this.url()}`, {
       method: 'POST',
       headers: headers(),
       body: JSON.stringify({
-        userbook: userbook
+        giver_id: giver_id,
+        taker_id: taker_id,
+        book_id: book_id
       })
     })
-    .then( res => res.json())
+    .then( res => res.json() )
   }
 
-  static getRailsUserBooks(){
-      return fetch(`${baseUrl}/userbooks`, {
-        headers: headers()
-      }
-    )
-  .then( res => res.json())
-  }
 
   static deleteUserBook(userBook){
     return fetch(`${baseUrl}/userbooks/${userBook.id}`, {
@@ -49,14 +37,13 @@ export default class BooksAdapter {
 
 
   static url(){
-    return `${baseUrl}/books`
+    return `${baseUrl}/loans`
   }
 }
 
 function headers(){
   return {
     'content-type': 'application/json',
-    'accept': 'application/json',
-    'Authorization': localStorage.getItem('user_id')
+    'accept': 'application/json'
   }
 }

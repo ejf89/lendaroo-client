@@ -25,7 +25,7 @@ export default function UserView (props) {
         <div className="col-md-1">
         </div>
         <div className="col-md-4">
-          < BookNav username={props.user.username}/>
+          < BookNav username={props.user.username} resetSelectedBook={props.resetSelectedBook}/>
         </div>
       </div>
 
@@ -37,14 +37,35 @@ export default function UserView (props) {
             <Switch>
               <Route path={`/${props.user.username}/browse`} render={() => < BooksList books={props.allBooks} setBook={props.setBook} />} />
 
-              <Route path={`/${props.user.username}`} render={ () =><  BooksList books={props.userBooks} setBook={props.setBook} /> }  />
+              <Route exact path={`/${props.user.username}`} render={ () =><  BooksList books={props.userBooks} setBook={props.setBook} /> }  />
 
               <Route exact path={`/${props.user.username}/:id`} render={ () =><  BooksList books={props.userBooks} setBook={props.setBook} /> } />
             </Switch>
         </div>
         </div>
+
         <div className="col-md-6">
-          < BookDetail book={props.detailBook} deleteUserBook={props.deleteUserBook} addUserBook={props.addUserBook} inCollection={props.inCollection} usersWithSelectedBook={props.usersWithSelectedBook}/> </div>
+          < BookDetail book = {
+            props.detailBook
+          }
+          deleteUserBook = {
+            props.deleteUserBook
+          }
+          addUserBook = {
+            props.addUserBook
+          }
+          inCollection = {
+            props.inCollection
+          }
+          usersWithSelectedBook = {
+            props.usersWithSelectedBook
+          }
+          createLoan = {
+            props.createLoan
+          }
+          />
+      </div>
+
       </div>
     </div>
 
