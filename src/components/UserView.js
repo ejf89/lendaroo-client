@@ -3,6 +3,7 @@ import Book from './Book'
 import BookNav from './BookNav'
 import BookDetail from './BookDetail'
 import BooksList from './BooksList'
+import Inbox from './Inbox'
 import { Route, Switch } from 'react-router-dom'
 
 export default function UserView (props) {
@@ -35,9 +36,11 @@ export default function UserView (props) {
         <div id="bookGallery" className="col-md-6">
             <div id="myBookList" className="row">
             <Switch>
+              <Route exact path={`/${props.user.username}`} render={() => < Inbox user={props.user} loans={props.loans} allBooks={props.allBooks}/>} />
+
               <Route path={`/${props.user.username}/browse`} render={() => < BooksList books={props.allBooks} setBook={props.setBook} />} />
 
-              <Route exact path={`/${props.user.username}`} render={ () =><  BooksList books={props.userBooks} setBook={props.setBook} /> }  />
+              <Route path={`/${props.user.username}/books`} render={ () => < BooksList books={props.userBooks} setBook={props.setBook} /> }  />
 
               <Route exact path={`/${props.user.username}/:id`} render={ () =><  BooksList books={props.userBooks} setBook={props.setBook} /> } />
             </Switch>
