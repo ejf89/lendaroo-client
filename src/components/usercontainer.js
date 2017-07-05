@@ -38,6 +38,9 @@ export default function UserContainer (props) {
       }
       createLoan = {
         props.createLoan
+      }
+      loans = {
+        props.loans
       } />
    </div>)
 

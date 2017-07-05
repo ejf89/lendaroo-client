@@ -91,6 +91,11 @@ class Main extends Component {
         UserAdapter.all().then(users => this.setState({users: users}))
       })
 
+      LoanAdapter.all()
+      .then( loans => this.setState({
+        loans: loans
+      }))
+
     } else {
       this.props.history.push('/login')
     }
@@ -211,8 +216,9 @@ class Main extends Component {
     let giver_id = parseInt(e.target.id, 10)
     let taker_id = this.state.auth.user.id
     let book_id = this.state.selectedBook.id
+    let title = this.state.selectedBook.title
 
-    LoanAdapter.createLoan(giver_id, taker_id, book_id)
+    LoanAdapter.createLoan(giver_id, taker_id, book_id, title)
     .then( loan => this.setState( (previousState) => {
       return {
         loans: [...previousState.loans, loan]
@@ -261,6 +267,9 @@ class Main extends Component {
         }
         createLoan = {
           this.createLoan
+        }
+        loans = {
+          this.state.loans
         }
         />}/>
 

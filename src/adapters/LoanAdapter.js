@@ -9,7 +9,7 @@ export default class LoanAdapter {
     .then( res => res.json() )
   }
 
-  static createLoan(giver_id, taker_id, book_id){
+  static createLoan(giver_id, taker_id, book_id, title){
     console.log("creating loan")
     return fetch(`${this.url()}`, {
       method: 'POST',
@@ -17,7 +17,8 @@ export default class LoanAdapter {
       body: JSON.stringify({
         giver_id: giver_id,
         taker_id: taker_id,
-        book_id: book_id
+        book_id: book_id,
+        title: title
       })
     })
     .then( res => res.json() )
