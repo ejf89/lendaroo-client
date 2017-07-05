@@ -4,7 +4,7 @@ import BooksList from './BooksList'
 export default function BooksContainer (props) {
   return(
     <div>
-      < BooksList books={props.books}/>
+      < BooksList books={props.books} />
     </div>
   )
 }

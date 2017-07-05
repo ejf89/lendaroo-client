@@ -8,8 +8,8 @@ export default function CrudButtons (props) {
   } else {
     return  (
       <div>
-      <button className="btn btn-primary" onClick={props.addUserBook}>Add to Your Collection</button>
-      {props.usersWithSelectedBook.map( user => <p>{user.username}</p>)}
+          <button className="btn btn-primary" onClick={props.addUserBook}>Add to Your Collection</button>
+          {props.usersWithSelectedBook.map( user => <button key={user.id} id={user.id} className="btn btn-primary" onClick={props.createLoan} >Send {user.username} a Lend Request</button>)}
       </div>
 
     )
