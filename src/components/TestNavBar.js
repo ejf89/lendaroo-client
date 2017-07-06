@@ -18,10 +18,8 @@ class TestNavBar extends Component {
           </Nav>
         </Navbar>
       </div>
-
     )
   }
-
 }
-
+ 
 export default withRouter(TestNavBar)

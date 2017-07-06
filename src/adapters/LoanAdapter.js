@@ -24,23 +24,46 @@ export default class LoanAdapter {
     .then( res => res.json() )
   }
 
-
-  static deleteUserBook(userBook){
-    return fetch(`${baseUrl}/userbooks/${userBook.id}`, {
-      method: 'DELETE',
+  static approveLoanRequest(loan_id){
+    return fetch(`${this.url() + '/' + loan_id}`, {
+      method: 'PATCH',
       headers: headers(),
       body: JSON.stringify({
-        userbook: userBook
+        loan_id: loan_id,
+        status: "approved"
       })
     })
     .then( res => res.json() )
   }
 
+  static completeLoanRequest(loan_id){
+    return fetch(`${this.url() + '/' + loan_id}`, {
+      method: 'PATCH',
+      headers: headers(),
+      body: JSON.stringify({
+        loan_id: loan_id,
+        status: "complete"
+      })
+    })
+    .then( res => res.json() )
+  }
+
+  static rejectLoanRequest(loan_id){
+    return fetch(`${this.url() + '/' + loan_id}`, {
+      method: 'DELETE',
+      headers: headers(),
+      body: JSON.stringify({
+        loan_id: loan_id,
+      })
+    })
+    .then( res => res.json() )
+  }
 
   static url(){
     return `${baseUrl}/loans`
   }
 }
+
 
 function headers(){
   return {

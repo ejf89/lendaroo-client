@@ -3,7 +3,6 @@ import UserView from './UserView'
 
 
 export default function UserContainer (props) {
-
   return(
     <div id="userView">
       < UserView id="userView" user = {
@@ -41,6 +40,15 @@ export default function UserContainer (props) {
       }
       createLoan = {
         props.createLoan
+      }
+      approveLoanRequest = {
+        props.approveLoanRequest
+      }
+      completeLoanRequest = {
+        props.completeLoanRequest
+      }
+      rejectLoanRequest = {
+        props.rejectLoanRequest
       }
       loans = {
         props.loans

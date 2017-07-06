@@ -5,6 +5,7 @@ import BooksList from './BooksList'
 import Inbox from './Inbox'
 import { Route, Switch } from 'react-router-dom'
 
+
 export default function UserView (props) {
   const { username } = props.user
   return(
@@ -34,7 +35,32 @@ export default function UserView (props) {
         <div id="bookGallery" className="col-md-6">
             <div id="myBookList" className="row">
             <Switch>
-              <Route exact path={`/${username}`} render={() => < Inbox user={props.user} loans={props.loans} allBooks={props.allBooks} users={props.users}/>} />
+              < Route exact path = {
+                  `/${username}`
+                }
+                render = {
+                  () => < Inbox user = {
+                    props.user
+                  }
+                  loans = {
+                    props.loans
+                  }
+                  allBooks = {
+                    props.allBooks
+                  }
+                  users = {
+                    props.users
+                  }
+                  approveLoanRequest = {
+                    props.approveLoanRequest
+                  }
+                  completeLoanRequest = {
+                    props.completeLoanRequest
+                  }
+                  rejectLoanRequest = {
+                    props.rejectLoanRequest
+                  } />
+                } />
 
               <Route path={`/${username}/browse`} render={() => < BooksList books={props.allBooks} setBook={props.setBook} />} />
 
@@ -45,7 +71,8 @@ export default function UserView (props) {
         </div>
         </div>
 
-        <div className="col-md-6">
+
+        <div id="BookDetail" className="col-md-6">
           < BookDetail book = {
             props.detailBook
           }
@@ -66,6 +93,7 @@ export default function UserView (props) {
           }
           />
       </div>
+
 
       </div>
     </div>
