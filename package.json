@@ -5,9 +5,12 @@
   "dependencies": {
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^3.3.7",
+    "google-map-react": "^0.24.0",
+    "google-maps-react": "^1.0.19",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.0",
     "react-dom": "^15.6.1",
+    "react-google-map": "^3.0.1",
     "react-router-dom": "^4.1.1",
     "react-sticky": "^6.0.1",
     "react-tab-view": "^1.0.5",

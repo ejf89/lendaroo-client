@@ -177,6 +177,7 @@ class Main extends Component {
   }
 
   setSelectedBook(e) {
+    console.log("I AM SETTING THE BOOK")
     let bookId = parseInt(e.target.id, 10)
     let booksArr = this.state.books
     let findBook = book => book.id === bookId

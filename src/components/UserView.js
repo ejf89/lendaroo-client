@@ -3,6 +3,7 @@ import BookNav from './BookNav'
 import BookDetail from './BookDetail'
 import BooksList from './BooksList'
 import Inbox from './Inbox'
+import Map from './Map'
 import { Route, Switch } from 'react-router-dom'
 
 
@@ -32,34 +33,45 @@ export default function UserView (props) {
 
 
       <div className="row">
-        <div className="col-md-6">
-            <div id="myBookList">
+        <div >
+            <div>
             <Switch>
               < Route exact path = {
                   `/${username}`
                 }
                 render = {
-                  () => < Inbox user = {
-                    props.user
-                  }
-                  loans = {
-                    props.loans
-                  }
-                  allBooks = {
-                    props.allBooks
-                  }
-                  users = {
-                    props.users
-                  }
-                  approveLoanRequest = {
-                    props.approveLoanRequest
-                  }
-                  completeLoanRequest = {
-                    props.completeLoanRequest
-                  }
-                  rejectLoanRequest = {
-                    props.rejectLoanRequest
-                  } />
+                  () =>
+                  <div>
+                    <div id="myBookList" className="col-md-6">
+
+                    < Inbox user = {
+                      props.user
+                    }
+                    loans = {
+                      props.loans
+                    }
+                    allBooks = {
+                      props.allBooks
+                    }
+                    users = {
+                      props.users
+                    }
+                    approveLoanRequest = {
+                      props.approveLoanRequest
+                    }
+                    completeLoanRequest = {
+                      props.completeLoanRequest
+                    }
+                    rejectLoanRequest = {
+                      props.rejectLoanRequest
+                    } />
+                </div>
+
+                <div id="mapDaddy" className="col-md-6" > < Map users={props.users} /> </div>
+
+              </div>
+
+
                 } />
 
               <Route path={`/${username}/browse`} render={() => < BooksList books={props.allBooks} setBook={props.setBook} />} />
@@ -67,7 +79,11 @@ export default function UserView (props) {
               <Route path={`/${username}/books`} render={ () => < BooksList books={props.userBooks} setBook={props.setBook} /> }  />
 
               <Route exact path={`/${username}/:id`} render={ () =><  BooksList books={props.userBooks} setBook={props.setBook} /> } />
+
+              <Route exact path='/map' render={() => <div id="mapDaddy"> <Map /> </div>} />
             </Switch>
+
+
         </div>
         </div>
 
