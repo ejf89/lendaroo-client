@@ -10,8 +10,8 @@ class NavBar extends Component {
   render(){
     return(
       <div>
-        <Nav justified >
-            <NavItem href={`${this.props.username}`} onClick={this.handleNavLink}> Home</NavItem>
+        <Nav justified staticTop>
+            <NavItem href={`/${this.props.username}`} onClick={this.handleNavLink}> Home</NavItem>
             <NavItem href="/browse" onClick={this.handleNavLink}>Browse</NavItem>
             <NavItem href="/search" onClick={this.handleNavLink}>Search</NavItem>
         </Nav>

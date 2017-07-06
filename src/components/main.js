@@ -9,6 +9,7 @@ import GoogleAdapter from '../adapters/GoogleAdapter'
 import BooksAdapter from '../adapters/BooksAdapter'
 import UserAdapter from '../adapters/UserAdapter'
 import NavBar from './NavBar'
+import TestNavBar from './TestNavBar'
 import BooksList from './BooksList'
 import GoogleSearch from './GoogleSearch'
 
@@ -234,7 +235,7 @@ class Main extends Component {
 
     return (
       <div className="container">
-        <NavBar username={this.state.auth.user.username}/>
+        <TestNavBar username={this.state.auth.user.username}/>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>}/>
 
         <Route path={`/${this.state.auth.user.username}`} render={() => < UserContainer user = {
