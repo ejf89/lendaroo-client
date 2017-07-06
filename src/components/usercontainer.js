@@ -9,6 +9,9 @@ export default function UserContainer (props) {
       < UserView user = {
         props.user
       }
+      users = {
+        props.users
+      }
       userBooks = {
         props.userBooks
       }

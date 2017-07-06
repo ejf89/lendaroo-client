@@ -36,7 +36,7 @@ export default function UserView (props) {
         <div id="bookGallery" className="col-md-6">
             <div id="myBookList" className="row">
             <Switch>
-              <Route exact path={`/${props.user.username}`} render={() => < Inbox user={props.user} loans={props.loans} allBooks={props.allBooks}/>} />
+              <Route exact path={`/${props.user.username}`} render={() => < Inbox user={props.user} loans={props.loans} allBooks={props.allBooks} users={props.users}/>} />
 
               <Route path={`/${props.user.username}/browse`} render={() => < BooksList books={props.allBooks} setBook={props.setBook} />} />
 
