@@ -2,8 +2,8 @@ import React from 'react'
 import { Button, Glyphicon } from 'react-bootstrap'
 
 export default function Inbox (props) {
-
   if (props.loans.length !== undefined){
+
     let userIsGiver = () => {
       return props.loans.filter( loan => loan.giver_id === props.user.id && loan.status === "pending")
     }
@@ -12,9 +12,15 @@ export default function Inbox (props) {
       return props.loans.filter( loan => loan.taker_id === props.user.id && loan.status === "pending")
     }
 
+    let userApproved = () => {
+      return props.loans.filter( loan => loan.giver_id === props.user.id && loan.status === "approved")
+    }
+
+
     if (props.loans.length !== undefined){
       userIsGiver = userIsGiver()
       userIsTaker = userIsTaker()
+      userApproved = userApproved()
     }
 
     let takerFind = (loan) => {
@@ -25,13 +31,18 @@ export default function Inbox (props) {
     }
 
     let receivedRequests = (loan) => {
-      return <li>{loan.title} requested by {takerFind(loan)}<Button><Glyphicon glyph="thumbs-up" /></Button>   </li>
+      return <li id={loan.id}>{loan.title} requested by {takerFind(loan)}
+         <Button id={loan.id} onClick={props.approveLoanRequest} ><Glyphicon glyph="thumbs-up" /></Button>
+           <Button id={loan.id} onClick={props.rejectLoanRequest} ><Glyphicon glyph="remove-circle" /></Button>
+         </li>
+    }
+    let approvedRequests = (loan) => {
+      return <li id={loan.id}>{loan.title} <Glyphicon glyph="arrow-right" /> {takerFind(loan)} <Button id={loan.id} onClick={props.completeLoanRequest} ><Glyphicon glyph="ok" /></Button>   </li>
     }
 
 
-
     return(
-      <div>
+      <div id="inbox">
         <h5>Received Requests</h5>
         <ul>
            {userIsGiver.map( loan => receivedRequests(loan))}
@@ -41,6 +52,12 @@ export default function Inbox (props) {
           <ul>
              {userIsTaker.map( loan => <li>{loan.title} requested from {giverFind(loan)}</li>)}
           </ul>
+
+          <h5>Current Loans</h5>
+            <ul>
+               {userApproved.map( loan => approvedRequests(loan))}
+            </ul>
+
       </div>
 
     )
