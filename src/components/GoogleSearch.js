@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import GoogleResult from './GoogleResult'
-import BooksList from './BooksList'
 
 export default class GoogleSearch extends Component{
   constructor(props){

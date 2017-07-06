@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Route, withRouter, Switch} from 'react-router-dom'
+import {Route, withRouter} from 'react-router-dom'
 import LoginForm from './LoginForm'
 import UserContainer from './UserContainer'
 // import BooksContainer from './BooksContainer'
