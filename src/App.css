@@ -15,21 +15,21 @@
   display: table;
   width: 100%;
   background-color: black;
-}
+}*/
 
 .navbar .nav > li {
   display: table-cell;
   width: 1%;
   float: none;
   text-align: center;
-}*/
+}
 
-.nav-link {
+/*.nav-link {
   color: white;
   font-size: 100%;
   font-weight: 200;
   font-style: bold;
-}
+}*/
 
 .book{
   display: flex;
@@ -60,9 +60,14 @@
   border-style: solid;
   border-color: #ff0000;
   background-color: #76ff91;
-  max-height: 400px;
+  /*max-height: 400px;*/
   overflow-y: scroll;
+  overflow-x: hidden;
   /*flex: 1;*/
+}
+
+#userView{
+  padding-top: 6em;
 }
 
 #userBio p {

@@ -5,8 +5,8 @@ import UserView from './UserView'
 export default function UserContainer (props) {
 
   return(
-    <div>
-      < UserView user = {
+    <div id="userView">
+      < UserView id="userView" user = {
         props.user
       }
       users = {

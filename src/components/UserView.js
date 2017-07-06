@@ -31,7 +31,7 @@ export default function UserView (props) {
 
 
       <div className="row">
-        <div id="bookGallery" className="col-md-7">
+        <div id="bookGallery" className="col-md-6">
             <div id="myBookList" className="row">
             <Switch>
               <Route exact path={`/${username}`} render={() => < Inbox user={props.user} loans={props.loans} allBooks={props.allBooks} users={props.users}/>} />
@@ -45,7 +45,7 @@ export default function UserView (props) {
         </div>
         </div>
 
-        <div className="col-md-5">
+        <div className="col-md-6">
           < BookDetail book = {
             props.detailBook
           }
