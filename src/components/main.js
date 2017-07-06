@@ -72,7 +72,7 @@ class Main extends Component {
       }
     })
     localStorage.setItem('user_id', user.id)
-    this.props.history.push(`/home`) //change this to custom slugs
+    this.props.history.push(`/home`)
   }
 
   componentDidMount() {
@@ -90,11 +90,13 @@ class Main extends Component {
       }).then(() => {
         UserAdapter.all().then(users => this.setState({users: users}))
       })
+      .then( () => {
+        LoanAdapter.all()
+        .then( loans => this.setState({
+          loans: loans
+        }))
+      } )
 
-      LoanAdapter.all()
-      .then( loans => this.setState({
-        loans: loans
-      }))
 
     } else {
       this.props.history.push('/login')
@@ -237,6 +239,9 @@ class Main extends Component {
 
         <Route path={`/${this.state.auth.user.username}`} render={() => < UserContainer user = {
           this.state.auth.user
+        }
+        users = {
+          this.state.users
         }
         userBooks = {
           this.state.userBooks
