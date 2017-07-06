@@ -32,8 +32,8 @@ export default function UserView (props) {
 
 
       <div className="row">
-        <div id="bookGallery" className="col-md-6">
-            <div id="myBookList" className="row">
+        <div className="col-md-6">
+            <div id="myBookList">
             <Switch>
               < Route exact path = {
                   `/${username}`

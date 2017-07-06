@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+
+}
+
+body {
+  background: url("http://cdn.wallpapersafari.com/1/53/xmqlwX.jpg") no-repeat center center fixed;
+  height: 100%
 }
 
 #g-search{
@@ -33,26 +39,23 @@
 
 .book{
   display: flex;
-  /*object-fit: cover;*/
-  justify-content: center;
+  flex-direction: column;
+  /*justify-content: center;*/
   align-items: center;
-  width: auto;
-  height: 100%;
-  border: 2px dashed #f69c55;
+  width: 120px;
+  height: 150px;
+  /*border: 2px dashed #f69c55;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .bookCover {
   display: flex;
-  object-fit: cover;
+  height: 100%;
   width: 100%;
-  height: auto;
+  /*padding-left: 0;
+  padding-right: 0;*/
 }
-
-/*#bookGallery{
-  height: 100px;
-  border: 5px;
-
-}*/
 
 #loginForm{
   padding-top: 10em;
@@ -60,18 +63,21 @@
 
 #myBookList{
   display: flex;
+  display: table;
   flex-wrap: wrap;
   border-style: solid;
   border-color: #ff0000;
-  background-color: #76ff91;
+  background-color:rgba(237,236,236,0.3);
   /*max-height: 400px;*/
   overflow-y: scroll;
   overflow-x: hidden;
   /*flex: 1;*/
+  align-items: center;
 }
 
 .bookDetailView{
   position: fixed;
+  background-color: white;
 }
 
 #userView{
