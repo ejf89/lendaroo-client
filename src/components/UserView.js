@@ -86,7 +86,7 @@ export default function UserView (props) {
             props.inCollection
           }
           usersWithSelectedBook = {
-            props.usersWithSelectedBook
+            props.usersWithSelectedBook.filter( user => user.id !== props.user.id)
           }
           createLoan = {
             props.createLoan

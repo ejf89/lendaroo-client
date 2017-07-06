@@ -15,12 +15,16 @@ export default function Inbox (props) {
     let userApproved = () => {
       return props.loans.filter( loan => loan.giver_id === props.user.id && loan.status === "approved")
     }
+    let userRequested = () => {
+      return props.loans.filter( loan => loan.taker_id === props.user.id && loan.status === "approved")
+    }
 
 
     if (props.loans.length !== undefined){
       userIsGiver = userIsGiver()
       userIsTaker = userIsTaker()
       userApproved = userApproved()
+      userRequested = userRequested()
     }
 
     let takerFind = (loan) => {
@@ -39,23 +43,27 @@ export default function Inbox (props) {
     let approvedRequests = (loan) => {
       return <li id={loan.id}>{loan.title} <Glyphicon glyph="arrow-right" /> {takerFind(loan)} <Button id={loan.id} onClick={props.completeLoanRequest} ><Glyphicon glyph="ok" /></Button>   </li>
     }
+    let requestedRequests = (loan) => {
+      return <li id={loan.id}>{loan.title} <Glyphicon glyph="arrow-left" /> {giverFind(loan) }  </li>
+    }
 
 
     return(
       <div id="inbox">
-        <h5>Received Requests</h5>
+        <h5 className="inboxHeader">Received Requests</h5>
         <ul>
            {userIsGiver.map( loan => receivedRequests(loan))}
         </ul>
 
-        <h5>Sent Requests</h5>
+        <h5>Pending Requests</h5>
           <ul>
-             {userIsTaker.map( loan => <li>{loan.title} requested from {giverFind(loan)}</li>)}
+             {userIsTaker.map( loan => <li>{loan.title}  <Glyphicon glyph="arrow-left" /> {giverFind(loan)}</li>)}
           </ul>
 
           <h5>Current Loans</h5>
             <ul>
                {userApproved.map( loan => approvedRequests(loan))}
+               {userRequested.map( loan => requestedRequests(loan) )}
             </ul>
 
       </div>
