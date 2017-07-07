@@ -9,19 +9,27 @@ export default class Map extends Component {
   }
 
 
+
   render() {
     if (this.props.users.length === 0){
       return <div> loading </div>
     }
 
-    // const Markers = this.props.users.map( user => < Marker key={user.id} lat={parseFloat(user.home_location.split(',')[0])} lng={parseFloat(user.home_location.split(',')[1])} />)
+    const userLat = this.props.currentUser.latitude
+    const userLng = this.props.currentUser.longitude
+    const userLocal = {lat: userLat, lng: userLng}
+
+
+    const Markers = this.props.users.map( user => < Marker key={user.id} lat={user.latitude} lng={user.longitude} />)
+
+
 
     return (
 
       <div id="map">
 
       <GoogleMapReact
-        defaultCenter={this.props.center}
+        defaultCenter={userLocal}
         defaultZoom={this.props.zoom}
 
 
@@ -30,7 +38,7 @@ export default class Map extends Component {
           language: 'en'
           }}  >
 
-          
+          {Markers}
 
       </GoogleMapReact>
     </div>

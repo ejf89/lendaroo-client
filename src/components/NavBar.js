@@ -7,16 +7,22 @@ class NavBar extends Component {
     event.preventDefault();
     this.props.history.push(event.currentTarget.getAttribute('href'));
   }
+
+  logOut = (event) => {
+    event.preventDefault();
+    localStorage.clear()
+    this.props.history.push(event.currentTarget.getAttribute('href'));
+  }
   render(){
     return(
       <div>
         <Nav justified staticTop>
             <NavItem href={`/${this.props.username}`} onClick={this.handleNavLink}> Home</NavItem>
             <NavItem href="/browse" onClick={this.handleNavLink}>Browse</NavItem>
-            <NavItem href="/search" onClick={this.handleNavLink}>Search</NavItem>
+          
+            <NavItem href="/login" onClick={this.logOut}>Log Out</NavItem>
         </Nav>
-      </div>
-    )
+      </div> )
   }
 
 }

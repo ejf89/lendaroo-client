@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import { Glyphicon } from 'react-bootstrap'
 
 import {mapMarker} from '../App.css'
 
 export default function (props) {
 
+
+
     return(
       <div style={mapMarker}>
-        <p>yooo</p>
+        <h5><Glyphicon glyph="book" /></h5>
       </div>
     )
 
