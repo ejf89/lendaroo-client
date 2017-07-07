@@ -10,7 +10,7 @@ import { Route, Switch } from 'react-router-dom'
 export default function UserView (props) {
   const { username } = props.user
 
-  
+
 
   return(
     <div>
@@ -70,7 +70,7 @@ export default function UserView (props) {
                     } />
                 </div>
 
-                <div id="mapDaddy" className="col-md-6" > < Map users={props.users} /> </div>
+                <div id="mapDaddy" className="col-md-6" > < Map currentUser={props.user} users={props.users} /> </div>
 
               </div>
 
