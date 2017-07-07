@@ -138,6 +138,7 @@ class Main extends Component {
           : 5
       }
     })
+    console.log("first part")
     GoogleAdapter.createLocalBooks(reshapedBooks).then((books) => {
       books.forEach(book => this.setState((previousState) => {
         return {

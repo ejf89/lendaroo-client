@@ -9,6 +9,9 @@ import { Route, Switch } from 'react-router-dom'
 
 export default function UserView (props) {
   const { username } = props.user
+
+  
+
   return(
     <div>
       <div  className="row" >
