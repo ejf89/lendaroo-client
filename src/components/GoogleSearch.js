@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GoogleResult from './GoogleResult'
+import { Row, Col } from 'react-bootstrap'
 
 export default class GoogleSearch extends Component{
   constructor(props){
@@ -23,6 +24,9 @@ export default class GoogleSearch extends Component{
   }
 
   handleSubmit(e){
+    if (this.state.searchTerm === ''){
+      return alert('Please enter a search term')
+    }
     e.preventDefault()
     console.log('search = ' + this.state.searchTerm)
     this.props.fireSearch(this.state.searchTerm)
@@ -62,20 +66,23 @@ export default class GoogleSearch extends Component{
 
   render(){
     return(
-      <div>
-        <h1>Search Google</h1>
+      <div id="googleSearchContainer">
+        <h1>Search The Whole Internet</h1>
         <button onClick={this.createAndResetHighLightedDivs} className="btn btn-primary">Add Selections!</button>
+        <form onSubmit={this.handleSubmit}>
         <div id="g-search" className="input-group">
             <input type="text" className="form-control" name="searchTerm" onChange={this.handleChange} value={this.state.searchTerm} placeholder="Search Books to Add to your collection!" />
             <span className="input-group-btn">
-          <button onClick={this.handleSubmit}className="btn btn-secondary" type="button">Go!</button>
+          <button onClick={this.handleSubmit}className="btn btn-secondary" type="submit">Go!</button>
         </span>
         </div>
+      </form>
 
-        <div className="row">
-
+        <Row>
+          <Col md={12} >
           {this.props.searchResults.map( result => <GoogleResult key={result.id} result={result} handleClick={this.handleClick}/> )}
-        </div>
+          </Col>
+        </Row>
       </div>
     )
   }

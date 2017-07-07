@@ -11,7 +11,7 @@ class LoginForm extends Component {
         password: '',
         email: '',
         picture: '',
-        home_location: ''
+        address: ''
       }
     }
     this.handleChange = this.handleChange.bind(this)

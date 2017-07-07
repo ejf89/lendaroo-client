@@ -14,9 +14,7 @@ export default class Map extends Component {
       return <div> loading </div>
     }
 
-    const Markers = this.props.users.map( user => < Marker key={user.id} lat={parseFloat(user.home_location.split(',')[0])} lng={parseFloat(user.home_location.split(',')[1])} />)
-    console.log(Markers)
-
+    // const Markers = this.props.users.map( user => < Marker key={user.id} lat={parseFloat(user.home_location.split(',')[0])} lng={parseFloat(user.home_location.split(',')[1])} />)
 
     return (
 
@@ -32,8 +30,7 @@ export default class Map extends Component {
           language: 'en'
           }}  >
 
-          {Markers}
-
+          
 
       </GoogleMapReact>
     </div>
