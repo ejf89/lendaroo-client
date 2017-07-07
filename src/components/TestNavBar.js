@@ -9,7 +9,6 @@ class TestNavBar extends Component {
   }
 
   logOut = (event) => {
-    event.preventDefault();
     localStorage.clear()
     this.props.history.push(event.currentTarget.getAttribute('href'));
   }
