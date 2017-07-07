@@ -79,6 +79,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
+    console.log("main mounting")
     if (localStorage.getItem('user_id')) {
       let user_id = parseInt(localStorage.getItem('user_id'), 10)
       AuthAdapter.currentUser(user_id).then(user => this.setState({
@@ -99,13 +100,14 @@ class Main extends Component {
           loans: loans
         }))
       } )
-
-
+      .then(() => "its over")
     } else {
       this.props.history.push('/login')
     }
     BooksAdapter.all().then(data => this.setState({books: data}))
   }
+
+
 
   addUserBook(e) {
     e.preventDefault()
@@ -344,7 +346,7 @@ class Main extends Component {
 
         />}/>
 
-        <Route path='/browse' render={() => <BooksList books={this.state.books} addUserBook={this.addUserBook}/>}/>
+      <Route path='/browse' render={() => <BooksList books={this.state.books} setBook={this.state.setBook} addUserBook={this.addUserBook}/>}/>
 
         <Route path='/search' render={() => <GoogleSearch localBooks={this.state.books} onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults} addUserBook={this.addUserBook}/>}/>
       </div>

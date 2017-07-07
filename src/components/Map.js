@@ -5,7 +5,7 @@ import Marker from './Marker'
 export default class Map extends Component {
   static defaultProps = {
     center: {lat: 40.705576 , lng: -74.013421},
-    zoom: 13
+    zoom: 11
   }
 
 

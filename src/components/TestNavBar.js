@@ -19,7 +19,7 @@ class TestNavBar extends Component {
         <Navbar justified fixedTop>
           <Nav >
               <NavItem href={`/${this.props.username}`} onClick={this.handleNavLink}> Home</NavItem>
-              <NavItem href="/browse" onClick={this.handleNavLink}>Browse</NavItem>
+              <NavItem href={`/${this.props.username}/browse`} onClick={this.handleNavLink}>Browse</NavItem>
               <NavItem href="/search" onClick={this.handleNavLink}>Search</NavItem>
               <NavItem href="/login" onClick={this.logOut}>Log Out</NavItem>
           </Nav>

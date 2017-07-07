@@ -14,7 +14,7 @@ const BookNav = (props) => (
           <Link className="nav-link" to={`/${props.username}/books`} onClick={props.resetSelectedBook}>All My Books</Link>
         </li>
         <li>
-          <Link className="nav-link" to={`/${props.username}/browse`} onClick={props.resetSelectedBook}>Availabe Books!</Link>
+          <Link className="nav-link" to={`/${props.username}/browse`} onClick={props.resetSelectedBook}>Availabe Books</Link>
         </li>
 
       </ul>
