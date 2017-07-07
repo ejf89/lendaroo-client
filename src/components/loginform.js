@@ -11,7 +11,8 @@ class LoginForm extends Component {
         password: '',
         email: '',
         picture: '',
-        address: ''
+        address: '',
+        bio: ''
       }
     }
     this.handleChange = this.handleChange.bind(this)
@@ -69,6 +70,9 @@ class LoginForm extends Component {
             <input type="text" placeholder="Link to a Profile Picture" onChange={this.handleSignUpChange} name="picture" />
             <label>Default Location</label>
             <input type="text" placeholder="Enter your home address" onChange={this.handleSignUpChange} name="address"/>
+            <label>How about a short bio?</label>
+            <input type="textarea" placeholder="a lil bit about yourself..." onChange={this.handleSignUpChange} name="bio"/>
+
             <input type="submit" />
           </form>
         </div>
