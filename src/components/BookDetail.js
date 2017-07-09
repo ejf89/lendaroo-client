@@ -9,8 +9,8 @@ export default function BookDetail (props) {
     return(
 
         <div id={id} className="bookDetailView">
-          <img src={image_url} alt={id}/>
-          <p>{title}</p>
+          <img src={image_url} alt={id} className="bookDetailCover"/>
+          <h3>{title}</h3>
           <p>{description}</p>
 
             < CrudButtons book = {

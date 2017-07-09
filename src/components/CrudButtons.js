@@ -1,4 +1,5 @@
 import React from 'react'
+import { Col, Button, ButtonGroup } from 'react-bootstrap'
 
 export default function CrudButtons (props) {
   if (props.inCollection){
@@ -7,10 +8,15 @@ export default function CrudButtons (props) {
     )
   } else {
     return  (
-      <div>
-          <button className="btn btn-primary" onClick={props.addUserBook}>Add to Your Collection</button>
-          {props.usersWithSelectedBook.map( user => <button key={user.id} id={user.id} className="btn btn-primary" onClick={props.createLoan} >Send {user.username} a Lend Request</button>)}
-      </div>
+      <Col md={12} id="crudButtons" >
+        <ButtonGroup  vertical>
+          < Button bsStyle={"info"} block onClick = {
+          props.addUserBook
+        } > Add to Your Collection < /Button>
+                  {props.usersWithSelectedBook.map( user => <Button key={user.id} id={user.id} className="btn btn-primary" onClick={props.createLoan} >Send {user.username} a Lend Request</Button >)
+        }
+      </ButtonGroup>
+      </Col>
 
     )
   }

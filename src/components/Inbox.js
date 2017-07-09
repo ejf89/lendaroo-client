@@ -94,14 +94,8 @@ export default function Inbox (props) {
       </div>
     }
 
-    let approvedRequests = (loan) => {
-      return <li id={loan.id}>{loan.title} <Glyphicon glyph="arrow-right" /> {takerFind(loan)} <Button id={loan.id} onClick={props.completeLoanRequest} ><Glyphicon glyph="ok" /></Button>   </li>
-    }
-    let requestedRequests = (loan) => {
-      return <li id={loan.id}>{loan.title} <Glyphicon glyph="arrow-left" /> {giverFind(loan) }  </li>
-    }
 
-    if (props.loans.length > 0){
+
       return(
 
         <div id="inbox">
@@ -116,9 +110,6 @@ export default function Inbox (props) {
 
       )
 
-    } else {
-      console.log("i am the else")
-    }
 
 
 }

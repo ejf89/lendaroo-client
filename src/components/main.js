@@ -75,7 +75,7 @@ class Main extends Component {
       }
     })
     localStorage.setItem('user_id', user.id)
-    this.props.history.push(`/home`)
+    this.props.history.push(`/${user.username}`)
   }
 
   componentDidMount() {
@@ -88,7 +88,11 @@ class Main extends Component {
           user: user
         }
       })).then(() => {
+          console.log("betweener")
         BooksAdapter.getRailsUserBooks().then(data => this.setState({railsUserBooks: data}))
+          console.log("after getRailsUserBooks")
+
+
 
         BooksAdapter.fetchUserBooks(this.state.auth.user.id).then((data) => this.setState({userBooks: data.books}))
       }).then(() => {
