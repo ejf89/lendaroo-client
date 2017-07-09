@@ -11,6 +11,7 @@ body {
 #mapDaddy{
   height: 400px;
   width: 400px;
+  margin-left: 8em;
 }
 
 #map {
