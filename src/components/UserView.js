@@ -10,7 +10,33 @@ import { Route, Switch } from 'react-router-dom'
 export default function UserView (props) {
   const { username } = props.user
 
+  const detailBookShow = () => {if (props.detailBook.id !== undefined) {
+    return (
+      <div id="BookDetail" className="col-md-6">
+        < BookDetail book = {
+            props.detailBook
+          }
+          deleteUserBook = {
+            props.deleteUserBook
+          }
+          addUserBook = {
+            props.addUserBook
+          }
+          inCollection = {
+            props.inCollection
+          }
+          usersWithSelectedBook = {
+            props.usersWithSelectedBook.filter( user => user.id !== props.user.id)
+          }
+          createLoan = {
+            props.createLoan
+          }
+          />
+      </div>
 
+    )
+  }
+}
 
   return(
     <div>
@@ -35,7 +61,7 @@ export default function UserView (props) {
 
 
 
-      <div className="row">
+      <div >
         <div >
             <div>
             <Switch>
@@ -45,7 +71,7 @@ export default function UserView (props) {
                 render = {
                   () =>
                   <div>
-                    <div id="myBookList" className="col-md-6">
+                    <div id="myBookList">
 
                     < Inbox user = {
                       props.user
@@ -70,7 +96,7 @@ export default function UserView (props) {
                     } />
                 </div>
 
-                <div id="mapDaddy" className="col-md-6" > < Map currentUser={props.user} users={props.users} /> </div>
+                <div id="mapDaddy" className="col-md-4" > < Map currentUser={props.user} users={props.users} /> </div>
 
               </div>
 
@@ -85,33 +111,11 @@ export default function UserView (props) {
 
               <Route exact path='/map' render={() => <div id="mapDaddy"> <Map /> </div>} />
             </Switch>
-
-
         </div>
         </div>
 
 
-        <div id="BookDetail" className="col-md-6">
-          < BookDetail book = {
-            props.detailBook
-          }
-          deleteUserBook = {
-            props.deleteUserBook
-          }
-          addUserBook = {
-            props.addUserBook
-          }
-          inCollection = {
-            props.inCollection
-          }
-          usersWithSelectedBook = {
-            props.usersWithSelectedBook.filter( user => user.id !== props.user.id)
-          }
-          createLoan = {
-            props.createLoan
-          }
-          />
-      </div>
+        {detailBookShow()}
 
 
       </div>

@@ -16,7 +16,6 @@ body {
 #map {
   width: 100%;
   height: 100%;
-  background-color: white;
 }
 
 .mapMarker{
@@ -84,20 +83,35 @@ body {
 #myBookList{
   display: flex;
   display: table;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   border-style: solid;
-  border-color: #ff0000;
+  border-color: #ff6958;
   background-color:rgba(237,236,236,0.3);
   /*max-height: 400px;*/
   overflow-y: scroll;
   overflow-x: hidden;
   /*flex: 1;*/
-  align-items: center;
+  /*align-items: center;*/
 }
 
 .bookDetailView{
   position: fixed;
+  width: 30em;
+  margin-left: 4em;
+  margin-top: -3em;
   background-color: white;
+  border: 2px solid #58ff98;
+  border-radius: 15px 50px 30px;
+  background-color:rgba(237,236,236,0.8);
+}
+
+.bookDetailCover{
+  margin-top: 1em;
+  width: 25%;
+}
+
+#crudButtons{
+  margin: 0 auto;
 }
 
 #userView{
