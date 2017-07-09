@@ -4,15 +4,18 @@ import { Button, Glyphicon, Table } from 'react-bootstrap'
 export default function Inbox (props) {
 
   if (props.loans === undefined){
+    console.log('load1')
     return <div>"LOADING..."</div>
   }
 
   if (props.loans.length === 0 ){
+      console.log('load2')
     return <div>"LOADING..."</div>
   }
 
   console.log(props.loans)
 
+  if (props.loans.length > 0 && props.users.length > 0){
     let userIsGiver = () => {
       return props.loans.filter( loan => loan.giver_id === props.user.id && loan.status === "pending")
     }
@@ -28,15 +31,6 @@ export default function Inbox (props) {
       return props.loans.filter( loan => loan.taker_id === props.user.id && loan.status === "approved")
     }
 
-
-  if(props.loans.length > 0){
-    userIsGiver = userIsGiver()
-    userIsTaker = userIsTaker()
-    userApproved = userApproved()
-    userRequested = userRequested()
-  }
-
-
     let takerFind = (loan) => {
       return props.users.filter( user => user.id === loan.taker_id)[0].username
     }
@@ -51,7 +45,7 @@ export default function Inbox (props) {
             <th>Received Requests</th>
           </thead>
           <tbody>
-            {userIsGiver.map(loan => <tr>
+            {userIsGiver().map(loan => <tr>
               <td>{loan.title}</td>
               <td>requested by {takerFind(loan)}
               </td>
@@ -74,7 +68,7 @@ export default function Inbox (props) {
             <th>Pending Requests</th>
           </thead>
           <tbody>
-            {userIsTaker.map( loan => <tr> <td>{loan.title}</td>  <td><Glyphicon glyph="arrow-left" /> from </td> <td> {giverFind(loan)} </td> </tr>)}
+            {userIsTaker().map( loan => <tr> <td>{loan.title}</td>  <td><Glyphicon glyph="arrow-left" /> from </td> <td> {giverFind(loan)} </td> </tr>)}
           </tbody>
         </Table>
       </div>
@@ -87,14 +81,12 @@ export default function Inbox (props) {
             <th> Current Loans</th>
           </thead>
           <tbody>
-            {userApproved.map( loan => <tr> <td> {loan.title} </td> <td> <Glyphicon glyph="arrow-right" /> </td> <td>{takerFind(loan)} </td> <td> <Button id={loan.id} onClick={props.completeLoanRequest} ><Glyphicon glyph="ok" /></Button>  </td> </tr> )}
-            {userRequested.map(  loan => <tr> <td> {loan.title} </td> <td> <Glyphicon glyph="arrow-left" /> </td> <td> {giverFind(loan) } </td> </tr>)}
+            {userApproved().map( loan => <tr><td>{loan.title}</td><td> <Glyphicon glyph="arrow-right" /> </td><td>{takerFind(loan)} </td><td> <Button id={loan.id} onClick={props.completeLoanRequest} ><Glyphicon glyph="ok" /></Button>  </td></tr> )}
+            {userRequested().map(  loan => <tr> <td> {loan.title} </td><td> <Glyphicon glyph="arrow-left" /> </td><td> {giverFind(loan) } </td></tr>)}
           </tbody>
         </Table>
       </div>
     }
-
-
 
       return(
 
@@ -110,6 +102,9 @@ export default function Inbox (props) {
 
       )
 
+} else {
+  return null
+}
 
 
 }
