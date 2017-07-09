@@ -70,8 +70,8 @@ export default function UserView (props) {
                 }
                 render = {
                   () =>
-                  <div>
-                    <div id="myBookList">
+                  <div id="listAndMap" >
+                    <div id="myBookList" className="col-md-6">
 
                     < Inbox user = {
                       props.user
@@ -96,7 +96,7 @@ export default function UserView (props) {
                     } />
                 </div>
 
-                <div id="mapDaddy" className="col-md-4" > < Map currentUser={props.user} users={props.users} /> </div>
+                <div id="mapDaddy" className="col-md-6" > < Map currentUser={props.user} users={props.users} /> </div>
 
               </div>
 

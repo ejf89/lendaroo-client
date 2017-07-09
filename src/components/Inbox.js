@@ -90,7 +90,7 @@ export default function Inbox (props) {
 
       return(
 
-        <div id="inbox">
+        <div id="inbox" >
 
           {receivedRequests()}
 
