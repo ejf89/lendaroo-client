@@ -8,8 +8,6 @@ export default class Map extends Component {
     zoom: 11
   }
 
-
-
   render() {
     if (this.props.users.length === 0){
       return <div> loading </div>

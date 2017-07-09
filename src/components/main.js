@@ -90,20 +90,25 @@ class Main extends Component {
       })).then(() => {
           console.log("betweener")
         BooksAdapter.getRailsUserBooks().then(data => this.setState({railsUserBooks: data}))
-          console.log("after getRailsUserBooks")
+
+          .then(() => {
+            console.log("fetching userBooks")
+            BooksAdapter.fetchUserBooks(this.state.auth.user.id).then((data) => this.setState({userBooks: data.books}))
+          }).then(() => {
+            console.log("fetching users")
+            UserAdapter.all().then(users => this.setState({users: users}))
+          })
+          .then( () => {
+            console.log("fetching loans")
+            LoanAdapter.all()
+            .then( loans => this.setState({
+              loans: loans
+            }))
+          } )
+          })
 
 
 
-        BooksAdapter.fetchUserBooks(this.state.auth.user.id).then((data) => this.setState({userBooks: data.books}))
-      }).then(() => {
-        UserAdapter.all().then(users => this.setState({users: users}))
-      })
-      .then( () => {
-        LoanAdapter.all()
-        .then( loans => this.setState({
-          loans: loans
-        }))
-      } )
       .then(() => "its over")
     } else {
       this.props.history.push('/login')
