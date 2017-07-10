@@ -29,7 +29,8 @@ class Main extends Component {
       inCollection: false,
       users: [],
       usersWithBook: [],
-      loans: {}
+      loans: {},
+      karma: ''
     }
     this.logIn = this.logIn.bind(this)
     this.addUserBook = this.addUserBook.bind(this)
@@ -46,6 +47,9 @@ class Main extends Component {
     this.approveLoanRequest = this.approveLoanRequest.bind(this)
     this.completeLoanRequest = this.completeLoanRequest.bind(this)
     this.rejectLoanRequest = this.rejectLoanRequest.bind(this)
+    this.getKarma = this.getKarma.bind(this)
+    this.setKarma = this.setKarma.bind(this)
+
   }
 
   logIn(loginParams) {
@@ -104,12 +108,16 @@ class Main extends Component {
             .then( loans => this.setState({
               loans: loans
             }))
+            .then(() => this.getKarma())
+            .then(() => this.setKarma())
           } )
+
           })
 
 
 
-      .then(() => "its over")
+
+
     } else {
       this.props.history.push('/login')
     }
@@ -248,41 +256,45 @@ class Main extends Component {
   approveLoanRequest(e){
     let loan_id = parseInt(e.target.parentElement.id, 10)
     LoanAdapter.approveLoanRequest(loan_id)
-    .then( (loan) => this.setState( (previousState)  => {
-      console.log(loan)
-      return (
-        {  loans: previousState.loans.map( l => {
-              if (l.id !== loan.id){
-                return l
-              } else {
-                return loan
-              }
+        .then( (loan) => this.setState( (previousState)  => {
+          return (
+            {  loans: previousState.loans.map( l => {
+                  if (l.id !== loan.id){
+                    return l
+                  } else {
+                    return loan
+                  }
+                }
+              )
             }
           )
         }
       )
-    }
-  ))
+    )
+    .then(() => this.getKarma())
+    .then(() => this.setKarma())
   }
 
   completeLoanRequest(e){
     let loan_id = parseInt(e.target.parentElement.id, 10)
     LoanAdapter.completeLoanRequest(loan_id)
-    .then( (loan) => this.setState( (previousState)  => {
-      console.log(loan)
-      return (
-        {  loans: previousState.loans.map( l => {
-              if (l.id !== loan.id){
-                return l
-              } else {
-                return loan
+      .then( (loan) => this.setState( (previousState)  => {
+        return (
+          {  loans: previousState.loans.map( l => {
+                if (l.id !== loan.id){
+                  return l
+                } else {
+                  return loan
+                }
               }
-            }
-          )
-        }
-      )
-    }
-  ))
+            )
+          }
+        )
+      }
+    )
+  )
+  .then(() => this.getKarma())
+  .then(() => this.setKarma())
   }
 
   rejectLoanRequest(e){
@@ -297,9 +309,24 @@ class Main extends Component {
   .then( () => alert("Loan request rejected!"))
   }
 
+  getKarma(){
+  let user = this.state.auth.user
+    if (this.state.loans.length === undefined){
+      return("loading")
+    }
+
+    return this.state.loans.filter((loan) => (loan.giver_id === user.id && loan.status !== "pending") || (loan.taker_id === user.id && loan.status === "complete")).length
+  }
+
+  setKarma(){
+    this.setState({
+      karma: this.getKarma() })
+  }
+
 
   render() {
     return (
+
       <div className="container">
         <TestNavBar username={this.state.auth.user.username}/>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>}/>
@@ -351,6 +378,9 @@ class Main extends Component {
         }
         loans = {
           this.state.loans
+        }
+        karma = {
+          this.state.karma
         }
 
         />}/>

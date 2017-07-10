@@ -2,6 +2,11 @@ import React from 'react'
 import Book from './Book'
 
 export default function BooksList (props) {
+  if (props.books.length === 0 ){
+    return(
+      <h1>...no books in this collection yet"</h1>
+    )
+  }
 
   return (
     <div id="myBookList" className="col-md-6">

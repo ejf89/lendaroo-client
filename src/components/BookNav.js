@@ -1,12 +1,12 @@
 import React from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
 
 
 const BookNav = (props) => (
   <div>
-    <nav className="navbar">
+
+    <nav id="bookNav" className="navbar col-md-12">
       <ul className="nav">
         <li>
           <Link className="nav-link" to={`/${props.username}`} onClick={props.resetSelectedBook}>Dashboard</Link>
