@@ -4,8 +4,7 @@ import {Link} from 'react-router-dom'
 
 
 const BookNav = (props) => (
-  <div>
-
+  <div className="BookNav">
     <nav id="bookNav" className="navbar col-md-12" >
       <ul className="nav">
         <li>
@@ -15,9 +14,8 @@ const BookNav = (props) => (
           <Link className="nav-link" to={`/${props.username}/books`} onClick={props.resetSelectedBook}>All My Books</Link>
         </li>
         <li>
-          <Link className="nav-link" to={`/${props.username}/browse`} onClick={props.resetSelectedBook}>Availabe Books</Link>
+          <Link className="nav-link" to={`/${props.username}/browse`} onClick={props.resetSelectedBook}>Available Books</Link>
         </li>
-
       </ul>
     </nav>
   </div>
