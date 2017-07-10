@@ -6,7 +6,6 @@ import Inbox from './Inbox'
 import Map from './Map'
 import { Route, Switch } from 'react-router-dom'
 import { Col } from 'react-bootstrap'
-import { AutoAffix } from 'react-overlays'
 
 
 export default function UserView (props) {
@@ -61,17 +60,10 @@ export default function UserView (props) {
 
 
         <div className="row" >
-
-          <AutoAffix viewportOffsetTop={49} autoWidth={false} affixClassName={"bookNavStick"} affixStyle={"width: 100px"}>
           <div className="col-md-6" >
-            <div>
             < BookNav username={username} resetSelectedBook={props.resetSelectedBook} />
         </div>
       </div>
-    </AutoAffix>
-
-
-        </div>
 
 
 
@@ -85,7 +77,7 @@ export default function UserView (props) {
                 render = {
                   () =>
                   <div id="listAndMap" >
-                    <div id="myBookList" className="col-md-6">
+                    <div id="myBookList" className="BookNav col-md-6">
 
                     < Inbox user = {
                       props.user
