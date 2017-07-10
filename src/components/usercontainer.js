@@ -52,7 +52,11 @@ export default function UserContainer (props) {
       }
       loans = {
         props.loans
-      } />
+      }
+      karma = {
+        props.karma
+      }
+    />
    </div>)
 
 }

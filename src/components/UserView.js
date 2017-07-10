@@ -5,6 +5,7 @@ import BooksList from './BooksList'
 import Inbox from './Inbox'
 import Map from './Map'
 import { Route, Switch } from 'react-router-dom'
+import { Col } from 'react-bootstrap'
 
 
 export default function UserView (props) {
@@ -40,22 +41,26 @@ export default function UserView (props) {
 
   return(
     <div>
-      <div  className="row" >
-        <div id="userInfo" className="col-md-3" >
+      <div  id="userInfo" className="row" >
+        <div  className="col-md-3" >
           <img id="userPic" src={props.user.picture} alt={username}/>
           <h2>{username}</h2>
+
         </div>
         <div id="userBio" className="col-md-6" >
-          <p>{props.user.bio}</p>
+            <h3>Karma: {props.karma}</h3>
+            <p><span id="bioHeader">Bio:</span> {props.user.bio}</p>
+
         </div>
+
 
       </div>
 
+
+
       <div className="row">
-        <div className="col-md-1">
-        </div>
-        <div className="col-md-4">
-          < BookNav username={username} resetSelectedBook={props.resetSelectedBook}/>
+        <div className="col-md-6">
+          < BookNav username={username} resetSelectedBook={props.resetSelectedBook} />
         </div>
       </div>
 

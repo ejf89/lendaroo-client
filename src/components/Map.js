@@ -25,6 +25,7 @@ export default class Map extends Component {
     return (
 
       <div id="map">
+        <h1>Users Near You</h1>
 
       <GoogleMapReact
         defaultCenter={userLocal}
