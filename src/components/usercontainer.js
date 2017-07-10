@@ -56,6 +56,12 @@ export default function UserContainer (props) {
       karma = {
         props.karma
       }
+      hoverUser = {
+        props.hoverUser
+      }
+      setHoverUser = {
+        props.setHoverUser
+      }
     />
    </div>)
 

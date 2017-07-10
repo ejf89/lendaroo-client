@@ -5,7 +5,7 @@ import Marker from './Marker'
 export default class Map extends Component {
   static defaultProps = {
     center: {lat: 40.705576 , lng: -74.013421},
-    zoom: 11
+    zoom: 14
   }
 
   render() {
@@ -17,9 +17,7 @@ export default class Map extends Component {
     const userLng = this.props.currentUser.longitude
     const userLocal = {lat: userLat, lng: userLng}
 
-
-    const Markers = this.props.users.map( user => < Marker key={user.id} lat={user.latitude} lng={user.longitude} />)
-
+    const Markers = this.props.users.map( user => < Marker setHoverUser={this.props.setHoverUser} user={user} name={user.username} key={user.id} lat={user.latitude} lng={user.longitude} hoverUser={this.props.hoverUser} />)
 
 
     return (

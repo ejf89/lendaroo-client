@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import GoogleResult from './GoogleResult'
 import { Row, Col } from 'react-bootstrap'
 
+
+
 export default class GoogleSearch extends Component{
   constructor(props){
     super(props)
@@ -80,7 +82,7 @@ export default class GoogleSearch extends Component{
 
         <Row>
           <Col md={12} >
-          {this.props.searchResults.map( result => <GoogleResult key={result.id} result={result} handleClick={this.handleClick}/> )}
+            {this.props.searchResults.map( result => <GoogleResult key={result.id} result={result} handleClick={this.handleClick}/> )}
           </Col>
         </Row>
       </div>

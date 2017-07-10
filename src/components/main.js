@@ -26,6 +26,7 @@ class Main extends Component {
       searchResults: [],
       stagedForLocalStorage: [],
       selectedBook: {},
+      hoverUser: {},
       inCollection: false,
       users: [],
       usersWithBook: [],
@@ -49,7 +50,8 @@ class Main extends Component {
     this.rejectLoanRequest = this.rejectLoanRequest.bind(this)
     this.getKarma = this.getKarma.bind(this)
     this.setKarma = this.setKarma.bind(this)
-    this.setJelloClass = this.setJelloClass.bind(this)
+    this.setHoverUser = this.setHoverUser.bind(this)
+
 
   }
 
@@ -92,7 +94,10 @@ class Main extends Component {
           isLoggedIn: true,
           user: user
         }
-      })).then(() => {
+      }
+    )
+  )
+  .then(() => {
           console.log("betweener")
         BooksAdapter.getRailsUserBooks().then(data => this.setState({railsUserBooks: data}))
 
@@ -111,14 +116,10 @@ class Main extends Component {
             }))
             .then(() => this.getKarma())
             .then(() => this.setKarma())
-          } )
-
-          })
-
-
-
-
-
+            }
+          )
+        }
+      )
     } else {
       this.props.history.push('/login')
     }
@@ -332,6 +333,16 @@ class Main extends Component {
       karma: this.getKarma() })
   }
 
+  setHoverUser(e){
+    console.log("in set hover user")
+    let userId = parseInt(e.target.parentElement.id, 10)
+    let user = this.state.users.filter( user => user.id === userId)
+    this.setState({
+      hoverUser: user
+    })
+  }
+
+
 
   render() {
     return (
@@ -391,12 +402,20 @@ class Main extends Component {
         karma = {
           this.state.karma
         }
+        hoverUser = {
+          this.state.hoverUser
+        }
+        setHoverUser = {
+          this.setHoverUser
+        }
 
         />}/>
 
       <Route path='/browse' render={() => <BooksList books={this.state.books} setBook={this.state.setBook} addUserBook={this.addUserBook}/>}/>
 
-        <Route path='/search' render={() => <GoogleSearch localBooks={this.state.books} onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults} addUserBook={this.addUserBook}/>}/>
+      < Route path = '/search' render = {
+        () => <GoogleSearch localBooks={this.state.books} onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults} addUserBook={this.addUserBook}/>
+      } />
       </div>
     )
   }

@@ -16,8 +16,14 @@ class TestNavBar extends Component {
   render(){
     return(
       <div>
-        <Navbar fixedTop>
+        <Navbar fixedTop justified >
+
           <Nav >
+            <Navbar.Header>
+              <Navbar.Brand>
+                 <h1>LitLend</h1>
+              </Navbar.Brand>
+            </Navbar.Header>
               <NavItem href={`/${this.props.username}`} onClick={this.handleNavLink}> Home</NavItem>
               <NavItem href={`/${this.props.username}/browse`} onClick={this.handleNavLink}>Browse</NavItem>
               <NavItem href="/search" onClick={this.handleNavLink}>Search</NavItem>

@@ -6,7 +6,7 @@ import Inbox from './Inbox'
 import Map from './Map'
 import { Route, Switch } from 'react-router-dom'
 import { Col } from 'react-bootstrap'
-import { AutoAffix} from 'react-overlays'
+import { AutoAffix } from 'react-overlays'
 
 
 export default function UserView (props) {
@@ -33,6 +33,9 @@ export default function UserView (props) {
           createLoan = {
             props.createLoan
           }
+          loans = {
+            props.loans
+          }
           />
       </div>
 
@@ -57,13 +60,18 @@ export default function UserView (props) {
 
 
 
-      <div className="row" >
-        <AutoAffix viewportOffsetTop={49} container={this} autoWidth={false} affixClassName={"bookNavStick"}>
-        <div className="col-md-6" >
-          < BookNav username={username} resetSelectedBook={props.resetSelectedBook} />
+        <div className="row" >
+
+          <AutoAffix viewportOffsetTop={49} autoWidth={false} affixClassName={"bookNavStick"} affixStyle={"width: 100px"}>
+          <div className="col-md-6" >
+            <div>
+            < BookNav username={username} resetSelectedBook={props.resetSelectedBook} />
         </div>
-      </AutoAffix>
       </div>
+    </AutoAffix>
+
+
+        </div>
 
 
 
@@ -102,7 +110,7 @@ export default function UserView (props) {
                     } />
                 </div>
 
-                <div id="mapDaddy" className="col-md-6" > < Map currentUser={props.user} users={props.users} /> </div>
+                <div id="mapDaddy" className="col-md-6" > < Map currentUser={props.user} users={props.users} hoverUser={props.hoverUser} setHoverUser={props.setHoverUser} /> </div>
 
               </div>
 
