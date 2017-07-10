@@ -6,6 +6,7 @@ import Inbox from './Inbox'
 import Map from './Map'
 import { Route, Switch } from 'react-router-dom'
 import { Col } from 'react-bootstrap'
+import { AutoAffix} from 'react-overlays'
 
 
 export default function UserView (props) {
@@ -52,16 +53,16 @@ export default function UserView (props) {
             <p><span id="bioHeader">Bio:</span> {props.user.bio}</p>
 
         </div>
-
-
       </div>
 
 
 
-      <div className="row">
-        <div className="col-md-6">
+      <div className="row" >
+        <AutoAffix viewportOffsetTop={49} container={this} autoWidth={false} affixClassName={"bookNavStick"}>
+        <div className="col-md-6" >
           < BookNav username={username} resetSelectedBook={props.resetSelectedBook} />
         </div>
+      </AutoAffix>
       </div>
 
 
