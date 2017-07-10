@@ -6,8 +6,8 @@ import {Link} from 'react-router-dom'
 const BookNav = (props) => (
   <div>
 
-    <nav id="bookNav" className="navbar col-md-12 bookNavStick"  >
-      <ul className="nav" data-spy="affix" data-offset-top="10">
+    <nav id="bookNav" className="navbar col-md-12" >
+      <ul className="nav">
         <li>
           <Link className="nav-link" to={`/${props.username}`} onClick={props.resetSelectedBook}>Dashboard</Link>
         </li>

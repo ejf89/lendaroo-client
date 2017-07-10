@@ -13,11 +13,11 @@ body {
 #mapDaddy{
   height: 500px;
   width: 400px;
-  margin-left: 8em;
-  position: relative;
-  border: 2px solid #58ff98;
-  border-radius: 15px 50px 30px;
-  background-color:rgba(237,236,236,0.8);
+  margin-left: 6em;
+  margin-top: -4em;
+  /*position: relative;*/
+  border-radius: 30px 50px 30px;
+  background-color:rgba(237,236,236,0.3);
 }
 
 #map {
@@ -51,6 +51,7 @@ body {
   background-color: #ed835c;
 }
 
+
 .searchGo {
   background-color: #ed5e5c;
 }
@@ -58,7 +59,8 @@ body {
 
 .googleBook{
   display: inline;
-  width: 40px;
+  width: 7.500em;
+  height: 9.375em;
   padding: 10px 6px 10px 6px;
 }
 
@@ -66,33 +68,70 @@ body {
   opacity: 0.5
 }
 
+.navbar-nav {
+  width: 100%
+}
+
 .navbar .nav > li {
   display: table-cell;
   width: 1%;
   float: none;
   text-align: center;
+  margin-top: -8em;
+  color: rgba(87, 205, 255, 0.37);
 }
 
+.nav {
+  height: 3em;
+}
+
+
+.navbar-brand{
+  letter-spacing: 0.75em;
+  margin-bottom: 1em;
+  margin-left: 0px;
+  padding-top: 0;
+  margin-top: 0.8em;
+  margin-left: -6em;
+}
+
+/*.navbar-brand h1{
+
+}*/
+
+
 #bookNav{
-  background-color:rgba(237,236,236,0.9);
+  background-color:rgba(237,236,236,1);
+  padding: none;
+  margin-left: 0.7em;
+  /*margin-top: 0.8em;*/
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+}
+
+#bookNav li {
+  color: rgba(87, 205, 255, 0.37)
 }
 
 .bookNavStick {
   z-index: 2;
-  /*width: auto;*/
-  /*background-color:rgba(237,236,236,0.9);*/
-  /*width: 100%;*/
-
-  /*position: -webkit-sticky;
-  position: sticky;
-  top: 50px;*/
+  margin-top: none;
+  width: 522px;
+  max-width: 525px;
+  height: 1.6em;
+  /*background-color:rgba(237,236,236,1);*/
 }
+
+/*.bookNavStick li {
+  background-color:rgba(237,236,236,0.4);
+}*/
 
 .book{
   display: flex;
   flex: auto;
   /*justify-content: center;*/
-  align-items: center;
+  /*align-items: center;*/
   width: 7.500em;
   height: 9.375em;
   /*border: 2px dashed #f69c55;*/
@@ -101,7 +140,7 @@ body {
 }
 
 .bookCover {
-  display: flex;
+  display: table-cell;
   height: 100%;
   width: 100%;
   /*padding-left: 0;
@@ -116,14 +155,9 @@ body {
   display: flex;
   display: table;
   flex-wrap: nowrap;
-  border-style: solid;
-  border-color: #ff6958;
   background-color:rgba(237,236,236,0.3);
-  /*max-height: 28em;*/
-  overflow-y: scroll;
-  overflow-x: hidden;
-  /*flex: 1;*/
-  /*align-items: center;*/
+  padding-left: 2.7em;
+
 }
 
 #inbox{
@@ -140,9 +174,17 @@ body {
   margin-left: 4em;
   margin-top: -3em;
   background-color: white;
-  border: 2px solid #58ff98;
-  border-radius: 15px 50px 30px;
-  background-color:rgba(237,236,236,0.8);
+  padding-bottom: 1.2em;
+  /*border: 2px solid #58ff98;*/
+  /*border-radius: 15px 50px 30px;*/
+  background-color:rgba(237,236,236,0.4);
+}
+
+#description{
+  border-radius: 15px 15px 15px 15px;
+  padding: 0.6em 1.2em 0.6em;
+  margin: 0 1.4em 0.5em 1.4em;
+  background-color: rgba(87, 205, 255, 0.37)
 }
 
 .bookDetailCover{
@@ -160,6 +202,7 @@ body {
 
 #userInfo{
   background-color:rgba(237,236,236,0.3);
+  margin-bottom: 0.8em
 }
 
 #userBio{
