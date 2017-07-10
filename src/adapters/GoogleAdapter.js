@@ -3,7 +3,7 @@ const baseUrl = 'http://localhost:3000/api/v1'
 
 export default class GoogleAdapter{
   static searchBooks(searchTerm){
-    return fetch(googleUrl + searchTerm + '&maxResults=30', {
+    return fetch(googleUrl + searchTerm + '&maxResults=40', {
       headers: headers()
       }
     )

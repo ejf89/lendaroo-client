@@ -68,12 +68,12 @@ export default class GoogleSearch extends Component{
     return(
       <div id="googleSearchContainer">
         <h1>Search The Whole Internet</h1>
-        <button onClick={this.createAndResetHighLightedDivs} className="btn btn-primary">Add Selections!</button>
+        <button onClick={this.createAndResetHighLightedDivs} className="btn btn-lg btn-block addGButton">Add Selections!</button>
         <form onSubmit={this.handleSubmit}>
         <div id="g-search" className="input-group">
             <input type="text" className="form-control" name="searchTerm" onChange={this.handleChange} value={this.state.searchTerm} placeholder="Search Books to Add to your collection!" />
             <span className="input-group-btn">
-          <button onClick={this.handleSubmit}className="btn btn-secondary" type="submit">Go!</button>
+          <button onClick={this.handleSubmit}className="btn btn-secondary searchGo" type="submit">Go!</button>
         </span>
         </div>
       </form>
