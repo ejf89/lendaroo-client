@@ -49,6 +49,7 @@ class Main extends Component {
     this.rejectLoanRequest = this.rejectLoanRequest.bind(this)
     this.getKarma = this.getKarma.bind(this)
     this.setKarma = this.setKarma.bind(this)
+    this.setJelloClass = this.setJelloClass.bind(this)
 
   }
 
@@ -207,6 +208,7 @@ class Main extends Component {
     let selectedBook = booksArr.find(findBook)
     this.setState({selectedBook: selectedBook})
 
+
     if (userBookIds.includes(selectedBook.id)) {
       this.setState({inCollection: true})
     } else {
@@ -222,6 +224,13 @@ class Main extends Component {
     } else {
       this.props.history.push(`/${username}/${bookId}`)
     }
+    // this.setJelloClass(e)
+  }
+
+  setJelloClass(e){
+    // setTimeout(function(){document.getElementsByClassName("bookDetailCover")[0].className = "bookDetailCover", 4000})
+
+    this.setTimeout(function(){console.log("time time"), 4000})
   }
 
   resetSelectedBook(){

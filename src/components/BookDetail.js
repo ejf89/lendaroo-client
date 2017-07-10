@@ -9,7 +9,7 @@ export default function BookDetail (props) {
     return(
 
         <div id={id} className="bookDetailView">
-          <img src={image_url} alt={id} className="bookDetailCover"/>
+          <img src={image_url} alt={id} className="bookDetailCover animated jello"/>
           <h3>{title}</h3>
           <p>{description}</p>
 

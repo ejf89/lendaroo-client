@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animate.css": "^3.5.2",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^3.3.7",
     "google-map-react": "^0.24.0",
