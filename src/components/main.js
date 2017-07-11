@@ -59,8 +59,20 @@ class Main extends Component {
     AuthAdapter.logIn(loginParams).then(user => {
       if (!user.error) {
         this.setUser(user)
+        this.componentDidMount()
       }
     })
+  }
+
+  setUser(user) {
+    this.setState({
+      auth: {
+        isLoggedIn: true,
+        user: user
+      }
+    })
+    localStorage.setItem('user_id', user.id)
+    this.props.history.push(`/${user.username}`)
   }
 
   currentUser() {
@@ -74,16 +86,6 @@ class Main extends Component {
     UserAdapter.createUser(userParams).then(user => this.setUser(user))
   }
 
-  setUser(user) {
-    this.setState({
-      auth: {
-        isLoggedIn: true,
-        user: user
-      }
-    })
-    localStorage.setItem('user_id', user.id)
-    this.props.history.push(`/${user.username}`)
-  }
 
   componentDidMount() {
     console.log("main mounting")
@@ -225,13 +227,6 @@ class Main extends Component {
     } else {
       this.props.history.push(`/${username}/${bookId}`)
     }
-    // this.setJelloClass(e)
-  }
-
-  setJelloClass(e){
-    // setTimeout(function(){document.getElementsByClassName("bookDetailCover")[0].className = "bookDetailCover", 4000})
-
-    this.setTimeout(function(){console.log("time time"), 4000})
   }
 
   resetSelectedBook(){

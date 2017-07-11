@@ -1,6 +1,5 @@
 import React from 'react'
 import Book from './Book'
-import GoogleSearch from './GoogleSearch'
 
 export default function BooksList (props) {
   if (props.books.length === 0 ){
