@@ -5,7 +5,9 @@ import { withRouter  } from 'react-router-dom'
 class TestNavBar extends Component {
   handleNavLink = (event) => {
     event.preventDefault();
+    this.props.resetSelectedBook()
     this.props.history.push(event.currentTarget.getAttribute('href'));
+
   }
 
   logOut = (event) => {

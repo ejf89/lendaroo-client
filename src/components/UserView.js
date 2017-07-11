@@ -38,6 +38,10 @@ export default function UserView (props) {
       </div>
 
     )
+  } else {
+    return (
+      <div id="bookPlaceHolder" className="col-md-6"><h3>Click any book to get more info and see users with you can request a loan from</h3></div>
+    )
   }
 }
 

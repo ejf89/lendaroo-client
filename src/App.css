@@ -199,7 +199,7 @@ body {
 }
 
 
-#myBookList{
+.myBookList{
   display: flex;
   display: table;
   flex-wrap: nowrap;
@@ -208,6 +208,7 @@ body {
   z-index: 1;
   position: relative;
 }
+
 
 #inbox{
   /*display: table;*/
@@ -234,6 +235,10 @@ body {
   background-color:rgba(237,236,236,0.4);
 }
 
+#userViewBookList.bookDetailView{
+  max-height: 100px;
+}
+
 #description{
   max-height: 30%;
   border-radius: 15px 15px 15px 15px;
@@ -247,6 +252,12 @@ body {
   margin-top: 1em;
   width: 27%;
   /*max-height: 1*/
+}
+
+#bookPlaceHolder {
+  float: right;
+  width: 30%;
+  padding-right: 20%;
 }
 
 #crudButtons{
@@ -283,4 +294,20 @@ body {
 #userPic{
   width: 70%;
   height: auto;
+}
+
+#userTable{
+
+}
+
+#userViewContainer{
+  margin-top: 10em;
+}
+
+#userViewBookList{
+  max-height: 20em;
+}
+
+#userDetailView{
+  /*position: fixed;*/
 }
