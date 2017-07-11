@@ -5,7 +5,6 @@ import BooksList from './BooksList'
 import Inbox from './Inbox'
 import Map from './Map'
 import { Route, Switch } from 'react-router-dom'
-import { Col } from 'react-bootstrap'
 
 
 export default function UserView (props) {
