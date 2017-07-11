@@ -23,7 +23,7 @@ class TestNavBar extends Component {
             <Nav >
               <Navbar.Header>
                 <Navbar.Brand>
-                  <h1>Lit Lend</h1>
+                  <h1>LitLend</h1>
                 </Navbar.Brand>
               </Navbar.Header>
               <NavItem href={`/${this.props.username}`} onClick={this.handleNavLink}> Home</NavItem>
