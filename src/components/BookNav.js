@@ -11,10 +11,13 @@ const BookNav = (props) => (
           <Link className="nav-link" to={`/${props.username}`} onClick={props.resetSelectedBook}>Dashboard</Link>
         </li>
         <li>
-          <Link className="nav-link" to={`/${props.username}/books`} onClick={props.resetSelectedBook}>All My Books</Link>
+          <Link className="nav-link" to={`/${props.username}/books`} onClick={props.resetSelectedBook}>My Books</Link>
         </li>
         <li>
-          <Link className="nav-link" to={`/${props.username}/browse`} onClick={props.resetSelectedBook}>Available Books</Link>
+          <Link className="nav-link" to={`/${props.username}/browse`} onClick={props.resetSelectedBook}>All Books</Link>
+        </li>
+        <li>
+          <Link className="nav-link" to={`/users`} onClick={props.resetSelectedBook}>Users</Link>
         </li>
       </ul>
     </nav>

@@ -11,6 +11,7 @@ import UserAdapter from '../adapters/UserAdapter'
 import TestNavBar from './TestNavBar'
 import BooksList from './BooksList'
 import GoogleSearch from './GoogleSearch'
+import UserList from './UserList'
 
 class Main extends Component {
   constructor() {
@@ -26,6 +27,7 @@ class Main extends Component {
       searchResults: [],
       stagedForLocalStorage: [],
       selectedBook: {},
+      selectedUser: {},
       hoverUser: {},
       inCollection: false,
       users: [],
@@ -40,6 +42,7 @@ class Main extends Component {
     this.createUser = this.createUser.bind(this)
     this.setUser = this.setUser.bind(this)
     this.setSelectedBook = this.setSelectedBook.bind(this)
+    this.setSelectedUser = this.setSelectedUser.bind(this)
     this.deleteUserBook = this.deleteUserBook.bind(this)
     this.addUserBook = this.addUserBook.bind(this)
     this.usersWithSelectedBook = this.usersWithSelectedBook.bind(this)
@@ -220,12 +223,14 @@ class Main extends Component {
 
     this.usersWithSelectedBook()
 
-    if (!this.props.history.location.pathname.includes(username)) {
-      this.props.history.push(`/${username}/${bookId}`)
-    } else if (this.props.history.location.pathname.includes(username + '/browse')) {
-      this.props.history.push(`/${username}/browse/${bookId}`)
-    } else {
-      this.props.history.push(`/${username}/${bookId}`)
+    if(!this.props.history.location.pathname.includes("users")){
+      if (!this.props.history.location.pathname.includes(username)) {
+        this.props.history.push(`/${username}/${bookId}`)
+      } else if (this.props.history.location.pathname.includes(username + '/browse')) {
+        this.props.history.push(`/${username}/browse/${bookId}`)
+      } else {
+        this.props.history.push(`/${username}/${bookId}`)
+      }
     }
   }
 
@@ -337,13 +342,23 @@ class Main extends Component {
     })
   }
 
+  setSelectedUser(e){
+    e.preventDefault()
+    let userId = parseInt(e.target.id, 10)
+    let user = this.state.users.filter( user => user.id === userId)
+    this.setState({
+      selectedUser: user
+    })
+
+  }
+
 
 
   render() {
     return (
 
       <div className="container">
-        <TestNavBar username={this.state.auth.user.username}/>
+        <TestNavBar username={this.state.auth.user.username} resetSelectedBook={this.resetSelectedBook}/>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>}/>
 
         <Route path={`/${this.state.auth.user.username}`} render={() => < UserContainer user = {
@@ -411,6 +426,26 @@ class Main extends Component {
       < Route path = '/search' render = {
         () => <GoogleSearch localBooks={this.state.books} onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults} addUserBook={this.addUserBook}/>
       } />
+
+    < Route path='/users' render={() => <UserList
+          users={this.state.users}
+          selectedUser={this.state.selectedUser}
+          setSelectedUser={this.setSelectedUser}
+          books={this.state.books}
+          setBook = {
+            this.setSelectedBook
+          }
+          selectedBook = {
+            this.setSelectedBook
+          }
+          detailBook = {
+            this.state.selectedBook
+          }
+          railsUserBooks = {
+            this.state.railsUserBooks
+          }
+
+      /> } />
       </div>
     )
   }
