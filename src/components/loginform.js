@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Glyphicon } from 'react-bootstrap'
 
 class LoginForm extends Component {
   constructor(){
@@ -47,18 +48,34 @@ class LoginForm extends Component {
   render(){
     return(
       <div id="loginForm">
-        <p> Login</p>
-        <form id="login" onSubmit={this.handleSubmit}>
-          <label>Username</label>
-          <input type="text" value={this.state.username} name="username" onChange={this.handleChange} />
-          <label>Password</label>
-            <input type="password" value={this.state.password} name="password" onChange={this.handleChange}/>
-            <input type="submit" />
-        </form>
 
-        <p>or sign up for a new account</p>
-      <div className="row" >
+        <h3 id="firstWelcome">welcome to</h3>
+        <h2 id="firstLogo">Lit Lend</h2>
+        <p  id="tagLine">...it's lit</p>
+
+        <div className="row">
+          <div className="col-md-1">
+          </div>
+
+          <div className="col-md-3" id="loginFields">
+            <p> Login </p>
+              <form id="login" onSubmit={this.handleSubmit}>
+                <label>Username</label>
+                <input type="text" value={this.state.username} name="username" onChange={this.handleChange} />
+                <label>Password</label>
+                <input type="password" value={this.state.password} name="password" onChange={this.handleChange}/>
+                <br></br>
+                <input type="submit" className="loginButton" />
+            </form>
+          </div>
+
+
+        <div className="col-md-2 signUpHeader">
+          <p>or sign up for a new account   <Glyphicon glyph="arrow-right"/></p>
+        </div>
+
         <div className="col-md-2">
+
           <form id="signUp" onSubmit={this.handleSubmit}>
             <label>Username</label>
             <input type="text" placeholder="Pick a Username!" onChange={this.handleSignUpChange} name="username"/>
@@ -73,12 +90,13 @@ class LoginForm extends Component {
             <label>How about a short bio?</label>
             <input type="textarea" placeholder="a lil bit about yourself..." onChange={this.handleSignUpChange} name="bio"/>
 
-            <input type="submit" />
+            <input type="submit" className="loginButton" />
           </form>
         </div>
       </div>
+    </div>
 
-      </div>
+
     )
   }
 }

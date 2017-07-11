@@ -118,18 +118,6 @@ body {
   z-index: 3;
 }
 
-
-
-/*#bookNav li {
-  color: rgba(87, 205, 255, 0.37)
-}*/
-
-
-
-/*.bookNavStick li {
-  background-color:rgba(237,236,236,0.4);
-}*/
-
 .book{
   display: flex;
   flex: auto;
@@ -153,6 +141,46 @@ body {
 #loginForm{
   padding-top: 10em;
 }
+
+#firstWelcome{
+  font-weight: 200;
+  letter-spacing: 10px;
+  padding-right: 70%;
+}
+
+#firstLogo{
+  font-size: 56px;
+  font-weight: 300;
+  padding-right: 60%;
+}
+
+#tagLine {
+  font-style: italic;
+  font-weight: 200;
+  padding-right: 80%;
+  letter-spacing: 3px;
+  font-size: 16px;
+}
+
+#loginFields{
+  padding-top: 10%;
+}
+#loginFields label {
+  padding-right: 10%;
+}
+
+.loginButton{
+  background-color: initial;
+  border-radius: 10px 10px 10px 10px;
+  border-color: #9ecfd8;
+  color: #2e545b;
+  margin-top: 0.8em;
+}
+
+.signUpHeader{
+  margin-top: 5%
+}
+
 
 #myBookList{
   display: flex;
