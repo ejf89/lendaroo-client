@@ -150,8 +150,15 @@ body {
 
 #firstLogo{
   font-size: 56px;
-  font-weight: 300;
+  font-weight: 600;
   padding-right: 60%;
+ text-shadow: -0.04em 0 white, 0 0.04em white, 0.04em 0 white, 0 -0.04em white;
+}
+
+#firstLogo span{
+  color: rgba(1, 127, 152, 1);
+  font-size: 56px;
+  font-weight: 100;
 }
 
 #tagLine {
@@ -160,10 +167,11 @@ body {
   padding-right: 80%;
   letter-spacing: 3px;
   font-size: 16px;
+  text-shadow: -0.2em 0 white, 0 0.2em white, 0.2em 0 white, 0 -0.2em white;
 }
 
 #loginFields{
-  padding-top: 10%;
+  padding-top: 5%;
 }
 #loginFields label {
   padding-right: 10%;
@@ -175,10 +183,19 @@ body {
   border-color: #9ecfd8;
   color: #2e545b;
   margin-top: 0.8em;
+  width: 70%;
 }
 
 .signUpHeader{
   margin-top: 5%
+}
+
+#signUp{
+  margin-top: 0%;
+}
+
+#signUp input {
+  width: 100%;
 }
 
 
@@ -190,7 +207,6 @@ body {
   padding-left: 2.7em;
   z-index: 1;
   position: relative;
-
 }
 
 #inbox{
@@ -202,31 +218,40 @@ body {
 
 
 .bookDetailView{
+  /*display: flex;*/
   position: fixed;
   width: 30em;
   margin-left: 4em;
-  margin-top: -6em;
+  margin-top: -6.5em;
   background-color: white;
   padding-bottom: 1.2em;
+  max-height: 30em;
+  float: right;
+  overflow-y: scroll;
+  /*max-height: inherit;*/
   /*border: 2px solid #58ff98;*/
   /*border-radius: 15px 50px 30px;*/
   background-color:rgba(237,236,236,0.4);
 }
 
 #description{
+  max-height: 30%;
   border-radius: 15px 15px 15px 15px;
+  box-shadow: inset 0 0 20px rgba(0, 5, 5, 0.47);
   padding: 0.6em 1.2em 0.6em;
   margin: 0 1.4em 0.5em 1.4em;
-  background-color: rgba(87, 205, 255, 0.37)
+  background-color: rgba(4, 16, 17, 0.08);
 }
 
 .bookDetailCover{
   margin-top: 1em;
-  width: 30%;
+  width: 27%;
+  /*max-height: 1*/
 }
 
 #crudButtons{
   margin: 0 auto;
+
 }
 
 #userView{

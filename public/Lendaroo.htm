@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://localhost:3001/Max/browse/9 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="stylesheet" href="./Lendaroo_files/bootstrap.min.css">
+    <style type="text/css">
+      @font-face {
+      font-family: 'Glyphicons Halflings';
+        src: url('../fonts/glyphicons-halflings-regular.eot');
+        src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),       url('../fonts/glyphicons-halflings-regular.woff') format('woff'),        url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'),       url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+ </style>
+
+ <script src="./Lendaroo_files/tether.min.js"></script>
+<script src="./Lendaroo_files/bootstrap.min.js"></script>
+  <script src="./Lendaroo_files/bootstrap.min(1).js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="./Lendaroo_files/animate.min.css">
+
+    <title>Lendaroo</title>
+  <style type="text/css">.App {
+  text-align: center;
+}
+
+body {
+  background: url(/static/media/BWbooks.dbabeec5.jpg) no-repeat center center fixed;
+  background-size:contain;
+  background-position:center;
+  /*height: 100%;*/
+  font-size: 16px;
+}
+
+#mapDaddy{
+  height: 500px;
+  width: 400px;
+  margin-left: 6em;
+  margin-top: -4em;
+  /*position: relative;*/
+  border-radius: 30px 50px 30px;
+  background-color:rgba(237,236,236,0.3);
+}
+
+#map {
+  width: 100%;
+  height: 80%;
+}
+
+
+.mapMarker{
+  height: 20px;
+  width: 20;
+}
+
+.mapInfo{
+  background-color: #ed835c;
+  z-index: 1000;
+  border: 2px black;
+  display: block;
+}
+
+#googleSearchContainer{
+  padding-top: 3em;
+  color: white;
+}
+
+#g-search{
+  padding-bottom: 20px;
+  display: -ms-flexbox;
+  display: flex;
+  display: table;
+}
+
+.addGButton {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  z-index: 2;
+  background-color: #ed835c;
+}
+
+
+.searchGo {
+  background-color: #ed5e5c;
+}
+
+
+.googleBook{
+  display: inline;
+  width: 7.500em;
+  height: 9.375em;
+  padding: 10px 6px 10px 6px;
+}
+
+.googleBook.selected{
+  opacity: 0.5
+}
+
+.navbar-nav {
+  width: 100%
+}
+
+.navbar .nav > li {
+  display: table-cell;
+  width: 1%;
+  float: none;
+  text-align: center;
+  margin-top: -8em;
+  color: rgba(87, 205, 255, 0.37);
+}
+
+.nav {
+  height: 3em;
+}
+
+
+.navbar-brand{
+  letter-spacing: 0.75em;
+  margin-bottom: 1em;
+  margin-left: 0px;
+  padding-top: 0;
+  margin-top: 0.8em;
+  margin-left: -6em;
+}
+
+.affixed + * {
+  margin-top: 48px;
+}
+
+#bookNav{
+  background-color:rgba(237,236,236,1);
+  padding: none;
+  margin-left: 0.7em;
+}
+
+.BookNav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 48px;
+  z-index: 3;
+}
+
+.book{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex: auto;
+      flex: auto;
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  width: 7.500em;
+  height: 9.375em;
+  /*border: 2px dashed #f69c55;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.bookCover {
+  display: table-cell;
+  height: 100%;
+  width: 100%;
+  /*padding-left: 0;
+  padding-right: 0;*/
+}
+
+#loginForm{
+  padding-top: 10em;
+}
+
+#firstWelcome{
+  font-weight: 200;
+  letter-spacing: 10px;
+  padding-right: 70%;
+}
+
+#firstLogo{
+  font-size: 56px;
+  font-weight: 600;
+  padding-right: 60%;
+ text-shadow: -0.04em 0 white, 0 0.04em white, 0.04em 0 white, 0 -0.04em white;
+}
+
+#firstLogo span{
+  color: rgba(1, 127, 152, 1);
+  font-size: 56px;
+  font-weight: 100;
+}
+
+#tagLine {
+  font-style: italic;
+  font-weight: 200;
+  padding-right: 80%;
+  letter-spacing: 3px;
+  font-size: 16px;
+  text-shadow: -0.2em 0 white, 0 0.2em white, 0.2em 0 white, 0 -0.2em white;
+}
+
+#loginFields{
+  padding-top: 5%;
+}
+#loginFields label {
+  padding-right: 10%;
+}
+
+.loginButton{
+  background-color: initial;
+  border-radius: 10px 10px 10px 10px;
+  border-color: #9ecfd8;
+  color: #2e545b;
+  margin-top: 0.8em;
+  width: 70%;
+}
+
+.signUpHeader{
+  margin-top: 5%
+}
+
+#signUp{
+  margin-top: 0%;
+}
+
+#signUp input {
+  width: 100%;
+}
+
+
+#myBookList{
+  display: -ms-flexbox;
+  display: flex;
+  display: table;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  background-color:rgba(237,236,236,0.3);
+  padding-left: 2.7em;
+  z-index: 1;
+  position: relative;
+}
+
+#inbox{
+  /*display: table;*/
+  height: inherit;
+  /*margin-bottom: -100px;*/
+
+}
+
+
+.bookDetailView{
+  /*display: flex;*/
+  position: fixed;
+  width: 30em;
+  margin-left: 4em;
+  margin-top: -6em;
+  background-color: white;
+  padding-bottom: 1.2em;
+  max-height: 30em;
+  float: right;
+  /*max-height: inherit;*/
+  /*border: 2px solid #58ff98;*/
+  /*border-radius: 15px 50px 30px;*/
+  background-color:rgba(237,236,236,0.4);
+}
+
+#description{
+  max-height: 30%;
+  border-radius: 15px 15px 15px 15px;
+  padding: 0.6em 1.2em 0.6em;
+  margin: 0 1.4em 0.5em 1.4em;
+  background-color: rgba(87, 205, 255, 0.37);
+}
+
+.bookDetailCover{
+  margin-top: 1em;
+  width: 30%;
+  /*max-height: 1*/
+}
+
+#crudButtons{
+  margin: 0 auto;
+
+}
+
+#userView{
+  padding-top: 6em;
+}
+
+#userInfo{
+  background-color:rgba(237,236,236,0.3);
+  margin-bottom: 0.8em
+}
+
+#userBio{
+  margin: 2% 0 0 0 ;
+}
+
+#userBio p {
+  font-style: italic;
+  margin: 8% 0 0 0 ;
+  /*border: 2px dashed #f69c55;*/
+  text-align: center;
+}
+
+#bioHeader{
+  font-weight: 600;
+  font-style: normal;
+  font-family: sans-serif;
+}
+
+#userPic{
+  width: 70%;
+  height: auto;
+}
+</style><style type="text/css">body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+</style><script type="text/javascript" charset="utf-8" src="./Lendaroo_files/0.fa5f7fa8795b7e1a42dc.hot-update.js"></script></head>
+  <body>
+
+    <div id="root"><div data-reactroot="" class="App container"><div class="container"><div><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><ul class="nav navbar-nav"><div class="navbar-header"><h1 class="navbar-brand">Lit Lend</h1></div><li role="presentation" class=""><a href="http://localhost:3001/Max"> Home</a></li><li role="presentation" class=""><a href="http://localhost:3001/Max/browse">Browse</a></li><li role="presentation" class=""><a href="http://localhost:3001/search">Search</a></li><li role="presentation" class=""><a href="http://localhost:3001/login">Log Out</a></li></ul></div></nav></div><!-- react-empty: 17 --><div id="userView"><div><div id="userInfo" class="row"><div class="col-md-3"><img id="userPic" src="./Lendaroo_files/smiley.png" alt="Max"><h2>Max</h2></div><div id="userBio" class="col-md-6"><h3><!-- react-text: 29 -->Karma: <!-- /react-text --><!-- react-text: 30 -->0<!-- /react-text --></h3><p><span id="bioHeader">Bio:</span><!-- react-text: 33 --> <!-- /react-text --><!-- react-text: 34 -->I made an app that willr evolutionize waiting<!-- /react-text --></p></div></div><div class="row"><div class="col-md-6"><div class="BookNav"><nav id="bookNav" class="navbar col-md-12"><ul class="nav"><li><a class="nav-link" href="http://localhost:3001/Max">Dashboard</a></li><li><a class="nav-link" href="http://localhost:3001/Max/books">All My Books</a></li><li><a class="nav-link" href="http://localhost:3001/Max/browse">Available Books</a></li></ul></nav></div></div></div><div><div><div><div id="myBookList" class="col-md-6"><div class="row-eq-height"><div class="book col-md-1"><img class="bookCover" id="1" src="./Lendaroo_files/content" alt="R. Crumb"></div><div class="book col-md-1"><img class="bookCover" id="2" src="./Lendaroo_files/content(1)" alt="Odds &amp; Ends"></div><div class="book col-md-1"><img class="bookCover" id="3" src="./Lendaroo_files/content(2)" alt="The R. Crumb Handbook"></div><div class="book col-md-1"><img class="bookCover" id="4" src="./Lendaroo_files/content(3)" alt="The R. Crumb Coffee Table Art Book"></div><div class="book col-md-1"><img class="bookCover" id="5" src="./Lendaroo_files/content(4)" alt="R. Crumb&#39;s Heroes of Blues, Jazz &amp; Country"></div><div class="book col-md-1"><img class="bookCover" id="6" src="./Lendaroo_files/content(5)" alt="Kafka"></div><div class="book col-md-1"><img class="bookCover" id="7" src="./Lendaroo_files/content(6)" alt="Complete Crumb Comics"></div><div class="book col-md-1"><img class="bookCover" id="8" src="./Lendaroo_files/content(7)" alt="Moby-Dick"></div><div class="book col-md-1"><img class="bookCover" id="9" src="./Lendaroo_files/content(8)" alt="Annotated Moby Dick or, the Whale with English Grammar Exercises"></div><div class="book col-md-1"><img class="bookCover" id="10" src="./Lendaroo_files/content(9)" alt="Porcelain"></div><div class="book col-md-1"><img class="bookCover" id="11" src="./Lendaroo_files/content(10)" alt="Moby-Duck"></div><div class="book col-md-1"><img class="bookCover" id="12" src="./Lendaroo_files/content(11)" alt="The Tetris Effect"></div><div class="book col-md-1"><img class="bookCover" id="13" src="./Lendaroo_files/content(12)" alt="Tetris"></div><div class="book col-md-1"><img class="bookCover" id="14" src="./Lendaroo_files/content(13)" alt="A Companion to Werner Herzog"></div><div class="book col-md-1"><img class="bookCover" id="15" src="./Lendaroo_files/content(14)" alt="Herzog on Herzog"></div><div class="book col-md-1"><img class="bookCover" id="16" src="./Lendaroo_files/content(15)" alt="Sessional Papers"></div><div class="book col-md-1"><img class="bookCover" id="17" src="./Lendaroo_files/content(16)" alt="Mastering Pac-Man"></div><div class="book col-md-1"><img class="bookCover" id="18" src="./Lendaroo_files/content(17)" alt="Pac-Man World 3"></div><div class="book col-md-1"><img class="bookCover" id="19" src="./Lendaroo_files/content(18)" alt="From Pac-Man to Pop Music"></div><div class="book col-md-1"><img class="bookCover" id="20" src="./Lendaroo_files/content(19)" alt="Prairie Dogs"></div><div class="book col-md-1"><img class="bookCover" id="21" src="./Lendaroo_files/content(20)" alt="The Big New Yorker Book of Dogs"></div><div class="book col-md-1"><img class="bookCover" id="22" src="./Lendaroo_files/content(21)" alt="Dogs"></div><div class="book col-md-1"><img class="bookCover" id="23" src="./Lendaroo_files/content(22)" alt="Zebra"></div><div class="book col-md-1"><img class="bookCover" id="24" src="./Lendaroo_files/content(23)" alt="Endangered Zebras"></div><div class="book col-md-1"><img class="bookCover" id="25" src="./Lendaroo_files/content(24)" alt="Zebra Mussels Biology, Impacts, and Control"></div><div class="book col-md-1"><img class="bookCover" id="26" src="./Lendaroo_files/content(25)" alt="React"></div><div class="book col-md-1"><img class="bookCover" id="27" src="./Lendaroo_files/content(26)" alt="Pro React"></div><div class="book col-md-1"><img class="bookCover" id="28" src="./Lendaroo_files/content(27)" alt="The Theory of Poker"></div><div class="book col-md-1"><img class="bookCover" id="29" src="./Lendaroo_files/content(28)" alt="Amarillo Slim&#39;s Play Poker to Win"></div><div class="book col-md-1"><img class="bookCover" id="30" src="./Lendaroo_files/content(29)" alt="Poker"></div></div></div></div></div></div></div></div><!-- react-empty: 19 --><!-- react-empty: 20 --></div></div></div>
+
+  <script type="text/javascript" src="./Lendaroo_files/bundle.js"></script>
+
+</body></html>

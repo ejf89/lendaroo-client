@@ -50,7 +50,7 @@ class LoginForm extends Component {
       <div id="loginForm">
 
         <h3 id="firstWelcome">welcome to</h3>
-        <h2 id="firstLogo">Lit Lend</h2>
+        <h2 id="firstLogo"><span>L</span>it Len<span>d</span></h2>
         <p  id="tagLine">...it's lit</p>
 
         <div className="row">
@@ -74,7 +74,7 @@ class LoginForm extends Component {
           <p>or sign up for a new account   <Glyphicon glyph="arrow-right"/></p>
         </div>
 
-        <div className="col-md-2">
+        <div className="col-md-3">
 
           <form id="signUp" onSubmit={this.handleSubmit}>
             <label>Username</label>
