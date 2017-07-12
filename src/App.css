@@ -226,9 +226,9 @@ body {
   margin-top: -6.5em;
   background-color: white;
   padding-bottom: 1.2em;
-  max-height: 30em;
+  /*max-height: 30em;*/
   float: right;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   /*max-height: inherit;*/
   /*border: 2px solid #58ff98;*/
   /*border-radius: 15px 50px 30px;*/
@@ -255,9 +255,11 @@ body {
 }
 
 #bookPlaceHolder {
-  float: right;
-  width: 30%;
-  padding-right: 20%;
+  /*float: right;
+
+/*margin-left: 20%;*/
+/*position: fixed;*/
+/*width: 50%;*/
 }
 
 #crudButtons{
@@ -294,6 +296,7 @@ body {
 #userPic{
   width: 70%;
   height: auto;
+  max-width: 14em;
 }
 
 #userTable{

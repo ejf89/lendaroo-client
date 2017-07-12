@@ -86,8 +86,16 @@ class Main extends Component {
 
   createUser(userParams) {
     console.log('sending into to backend...')
-    UserAdapter.createUser(userParams).then(user => this.setUser(user))
-  }
+    UserAdapter.createUser(userParams).then(user => {
+      if (!user.error) {
+        this.setUser(user)
+        this.componentDidMount()
+      }
+    })
+
+
+
+    }
 
 
   componentDidMount() {
@@ -140,7 +148,8 @@ class Main extends Component {
         userBooks: [
           ...previousState.userBooks,
           newBook
-        ]
+        ],
+        inCollection: true
       }
     })).then(() => BooksAdapter.getRailsUserBooks().then(data => this.setState({railsUserBooks: data})))
     alert('Added!')
@@ -349,6 +358,7 @@ class Main extends Component {
     this.setState({
       selectedUser: user
     })
+    this.resetSelectedBook()
 
   }
 
@@ -361,7 +371,7 @@ class Main extends Component {
         <TestNavBar username={this.state.auth.user.username} resetSelectedBook={this.resetSelectedBook}/>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>}/>
 
-        <Route path={`/${this.state.auth.user.username}`} render={() => < UserContainer user = {
+        <Route path={`/${this.state.auth.user.username}`} render={(routerProps) => < UserContainer user = {
           this.state.auth.user
         }
         users = {
@@ -444,7 +454,6 @@ class Main extends Component {
           railsUserBooks = {
             this.state.railsUserBooks
           }
-
       /> } />
       </div>
     )
