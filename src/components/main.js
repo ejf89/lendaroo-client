@@ -438,10 +438,18 @@ class Main extends Component {
       } />
 
     < Route path='/users' render={() => <UserList
-          users={this.state.users}
-          selectedUser={this.state.selectedUser}
-          setSelectedUser={this.setSelectedUser}
-          books={this.state.books}
+          users = {
+            this.state.users
+          }
+          selectedUser = {
+            this.state.selectedUser
+          }
+          setSelectedUser = {
+            this.setSelectedUser
+          }
+          books = {
+            this.state.books
+          }
           setBook = {
             this.setSelectedBook
           }
@@ -453,6 +461,24 @@ class Main extends Component {
           }
           railsUserBooks = {
             this.state.railsUserBooks
+          }
+          inCollection = {
+            this.state.inCollection
+          }
+          deleteUserBook = {
+            this.deleteUserBook
+          }
+          addUserBook = {
+            this.addUserBook
+          }
+          usersWithSelectedBook = {
+            this.state.usersWithBook
+          }
+          createLoan = {
+            this.createLoan
+          }
+          loans = {
+            this.state.loans
           }
       /> } />
       </div>
