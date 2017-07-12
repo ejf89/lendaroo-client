@@ -13,7 +13,7 @@ export default function CrudButtons (props) {
           < Button bsStyle={"info"} block onClick = {
           props.addUserBook
         } > Add to Your Collection < /Button>
-          {props.usersWithSelectedBook.map( user => <Button key={user.id} id={user.id} className="btn btn-primary" onClick={props.createLoan} >Send {user.username} a Lend Request</Button >)
+          {props.usersWithSelectedBook.map( user => <Button key={user.id} id={user.id} className="btn btn-primary" onClick={props.createLoan} >Ask {user.username} to borrow this book</Button >)
   }
       </ButtonGroup>
       </Col>

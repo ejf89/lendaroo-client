@@ -1,5 +1,4 @@
 import React from 'react'
-import CrudButtons from './CrudButtons'
 
 export default function UserDetail (props) {
 

@@ -54,8 +54,6 @@ class Main extends Component {
     this.getKarma = this.getKarma.bind(this)
     this.setKarma = this.setKarma.bind(this)
     this.setHoverUser = this.setHoverUser.bind(this)
-
-
   }
 
   logIn(loginParams) {
@@ -438,8 +436,11 @@ class Main extends Component {
       } />
 
     < Route path='/users' render={() => <UserList
+          user = {
+            this.state.auth.user
+          }
           users = {
-            this.state.users
+            this.state.users.filter( user => user.id !== this.state.auth.user.id)
           }
           selectedUser = {
             this.state.selectedUser
