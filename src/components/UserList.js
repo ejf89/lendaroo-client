@@ -38,9 +38,29 @@ export default function UserList (props) {
 
         <div className="col-md-4">
           <UserDetail user={props.selectedUser[0]}/>
+
+            < UserDetailBookDetail book = {
+                props.detailBook
+              }
+              deleteUserBook = {
+                props.deleteUserBook
+              }
+              addUserBook = {
+                props.addUserBook
+              }
+              inCollection = {
+                props.inCollection
+              }
+            
+              createLoan = {
+                props.createLoan
+              }
+              loans = {
+                props.loans
+              } />
         </div>
 
-        <div className="col-md-4" id="userViewBookList">
+        <div className="col-md-4" >
           <BooksList setBook={props.setBook} books={selectedUsersBooks} />
         </div>
 
@@ -48,11 +68,8 @@ export default function UserList (props) {
           <div className="col-md-4">
           </div>
 
-          <div className="col-md-4">
-            <UserDetailBookDetail book={props.detailBook}/>
-          </div>
 
-            <div className="col-md-4">
+            <div className="col-md-3">
             </div>
         </div>
 

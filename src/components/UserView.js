@@ -4,10 +4,10 @@ import BookDetail from './BookDetail'
 import BooksList from './BooksList'
 import Inbox from './Inbox'
 import Map from './Map'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 
 
-export default function UserView (props) {
+function UserView (props) {
   const { username } = props.user
 
   const detailBookShow = () => {if (props.detailBook.id !== undefined) {
@@ -36,17 +36,22 @@ export default function UserView (props) {
           }
           />
       </div>
-
     )
-  } else {
+  } else if (props.history.location.pathname.includes("browse")) {
     return (
-      <div id="bookPlaceHolder" className="col-md-6"><h3>Click any book to get more info and see users with you can request a loan from</h3></div>
+      <div>
+      <div className="col-md-1">
+      </div>
+
+      <div id="bookPlaceHolder" className="col-md-4" ><h3>Click any book to get more info and see users with you can request a loan from</h3></div>
+      </div>
     )
   }
 }
 
   return(
     <div>
+
       <div  id="userInfo" className="row" >
         <div  className="col-md-3" >
           <img id="userPic" src={props.user.picture} alt={username}/>
@@ -56,9 +61,9 @@ export default function UserView (props) {
         <div id="userBio" className="col-md-6" >
             <h3>Karma: {props.karma}</h3>
             <p><span id="bioHeader">Bio:</span> {props.user.bio}</p>
-
         </div>
-      </div>
+
+    </div>
 
 
 
@@ -132,3 +137,5 @@ export default function UserView (props) {
 
   )
 }
+
+export default withRouter(UserView)

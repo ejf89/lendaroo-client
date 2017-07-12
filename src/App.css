@@ -209,6 +209,18 @@ body {
   position: relative;
 }
 
+.userBookList{
+  /*display: flex;*/
+  /*display: table;*/
+  /*flex-wrap: nowrap;*/
+  background-color:rgba(237,236,236,0.3);
+  padding-left: 3.7em;
+  z-index: 1;
+  /*position: relative;*/
+  height: 600px;
+  overflow-y: scroll;
+}
+
 
 #inbox{
   /*display: table;*/
@@ -226,18 +238,18 @@ body {
   margin-top: -6.5em;
   background-color: white;
   padding-bottom: 1.2em;
-  max-height: 30em;
+  /*max-height: 30em;*/
   float: right;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   /*max-height: inherit;*/
   /*border: 2px solid #58ff98;*/
   /*border-radius: 15px 50px 30px;*/
   background-color:rgba(237,236,236,0.4);
 }
-
+/*
 #userViewBookList.bookDetailView{
   max-height: 100px;
-}
+}*/
 
 #description{
   max-height: 30%;
@@ -255,9 +267,11 @@ body {
 }
 
 #bookPlaceHolder {
-  float: right;
-  width: 30%;
-  padding-right: 20%;
+  /*float: right;
+
+/*margin-left: 20%;*/
+/*position: fixed;*/
+/*width: 50%;*/
 }
 
 #crudButtons{
@@ -294,6 +308,7 @@ body {
 #userPic{
   width: 70%;
   height: auto;
+  max-width: 14em;
 }
 
 #userTable{
@@ -304,10 +319,18 @@ body {
   margin-top: 10em;
 }
 
-#userViewBookList{
+/*#userViewBookList{
   max-height: 20em;
+}*/
+
+.UserBookDetailView{
+  padding-top: 2em;
+}
+
+.UserBookDetailView #description{
+ background-color:rgba(237,236,236,0.6);
 }
 
 #userDetailView{
-  /*position: fixed;*/
+  padding-top: -5em;
 }

@@ -13,6 +13,7 @@ export default function UserDetailBookDetail (props) {
           <h3>{title}</h3>
           <p id="description">{description}</p>
 
+            
         </div>
 
 
