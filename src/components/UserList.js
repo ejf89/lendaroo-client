@@ -39,7 +39,14 @@ export default function UserList (props) {
         <div className="col-md-4">
           <UserDetail user={props.selectedUser[0]}/>
 
-            < UserDetailBookDetail book = {
+            < UserDetailBookDetail
+              user = {
+                props.user
+              }
+              selectedUser = {
+                props.selectedUser[0]
+              }
+              book = {
                 props.detailBook
               }
               deleteUserBook = {
@@ -51,7 +58,7 @@ export default function UserList (props) {
               inCollection = {
                 props.inCollection
               }
-            
+
               createLoan = {
                 props.createLoan
               }

@@ -311,17 +311,18 @@ body {
   max-width: 14em;
 }
 
-#userTable{
 
-}
 
 #userViewContainer{
   margin-top: 10em;
 }
 
-/*#userViewBookList{
-  max-height: 20em;
-}*/
+#userViewContainer p {
+  color: #29248a;
+  background-color: #ed5e5c;
+  border-radius: 10px 10px 10px 10px;
+}
+
 
 .UserBookDetailView{
   padding-top: 2em;
