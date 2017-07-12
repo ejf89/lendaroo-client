@@ -3,11 +3,15 @@
 }
 
 body {
-  background: url("images/BWbooks.jpg") no-repeat center center fixed;
-  background-size:contain;
+  background: url("images/fernBG2.jpg") no-repeat center center fixed;
+  background-size: cover;
   background-position:center;
   /*height: 100%;*/
   font-size: 16px;
+}
+
+table {
+  background-color: #ffa48f;
 }
 
 #mapDaddy{
@@ -319,7 +323,7 @@ body {
 
 #userViewContainer p {
   color: #29248a;
-  background-color: #ed5e5c;
+  background-color: #eb9057;
   border-radius: 10px 10px 10px 10px;
 }
 
