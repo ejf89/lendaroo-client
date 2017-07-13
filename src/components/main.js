@@ -43,6 +43,7 @@ class Main extends Component {
     this.setUser = this.setUser.bind(this)
     this.setSelectedBook = this.setSelectedBook.bind(this)
     this.setSelectedUser = this.setSelectedUser.bind(this)
+    this.setSelectedUserById = this.setSelectedUserById.bind(this)
     this.deleteUserBook = this.deleteUserBook.bind(this)
     this.addUserBook = this.addUserBook.bind(this)
     this.usersWithSelectedBook = this.usersWithSelectedBook.bind(this)
@@ -358,6 +359,15 @@ class Main extends Component {
     })
     this.resetSelectedBook()
 
+    this.props.history.push(`/users/${user[0].id}`)
+  }
+
+  setSelectedUserById(id){
+    let user = this.state.users.filter( user => user.id === id)
+    this.setState({
+      selectedUser: user
+    })
+    this.resetSelectedBook()
   }
 
 
@@ -367,6 +377,7 @@ class Main extends Component {
 
       <div className="container">
         <TestNavBar username={this.state.auth.user.username} resetSelectedBook={this.resetSelectedBook}/>
+        <Route exact path='/' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>}/>
         <Route path='/login' render={() => <LoginForm onSubmit={this.logIn} createUser={this.createUser}/>}/>
 
         <Route path={`/${this.state.auth.user.username}`} render={(routerProps) => < UserContainer user = {
@@ -435,6 +446,8 @@ class Main extends Component {
         () => <GoogleSearch localBooks={this.state.books} onCreate={this.createLocalBooks} stagedBooks={this.state.stagedForLocalStorage} fireSearch={this.fireSearch} searchResults={this.state.searchResults} addUserBook={this.addUserBook}/>
       } />
 
+
+
     < Route path='/users' render={() => <UserList
           user = {
             this.state.auth.user
@@ -481,7 +494,11 @@ class Main extends Component {
           loans = {
             this.state.loans
           }
+          setSelectedUserById = {
+            this.setSelectedUserById
+          }
       /> } />
+
       </div>
     )
   }

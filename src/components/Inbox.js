@@ -13,7 +13,12 @@ export default function Inbox (props) {
   if (props.loans.length > 0 && props.users.length > 0){
 
     if (props.loans.filter( loan => loan.giver_id === props.user.id || loan.taker_id === props.user.id).length === 0){
-      return <h1>"no loans yet"</h1>
+      return (
+        <div>
+          <h3>👆🏽      🕵️‍     👆🏽  </h3>
+          <h3>No loans yet, click around to get started!</h3>
+        </div>
+        )
     }
 
       let userIsGiver = () => {

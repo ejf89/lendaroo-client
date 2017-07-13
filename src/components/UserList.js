@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react'
 import UserDetail from './UserDetail'
 import BooksList from './BooksList'
 import { Table } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
 import UserDetailBookDetail from './UserDetailBookDetail'
 
-export default function UserList (props) {
+function UserList (props) {
   let selectedUsersBooks = []
+
+  // if (props.history.location.pathname.includes("users/") && firstLoad === false){
+  //   let userId = parseInt(props.history.location.pathname.split("/")[2], 10)
+  //   props.setSelectedUserById(userId)
+  //   firstLoad = true
+  // }
+
 
   if (props.selectedUser[0] !== undefined){
     let selectedUserId = props.selectedUser[0].id
@@ -19,12 +27,11 @@ export default function UserList (props) {
         }
       }
     )
-
-
   }
 
-  return(<div className="row" id="userViewContainer">
 
+
+  return(<div className="row" id="userViewContainer">
           <div id="userTable" className="col-md-4">
             <Table striped condensed hover>
               <thead>
@@ -79,9 +86,8 @@ export default function UserList (props) {
             <div className="col-md-3">
             </div>
         </div>
-
-
-
       </div>
       )
 }
+
+export default withRouter(UserList)
