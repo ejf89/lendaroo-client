@@ -15,7 +15,7 @@ export default function Inbox (props) {
     if (props.loans.filter( loan => loan.giver_id === props.user.id || loan.taker_id === props.user.id).length === 0){
       return (
         <div>
-          <h3>👆🏽      🕵️‍     👆🏽  </h3>
+          <h3>👆🏽     🕵️‍     👆🏽  </h3>
           <h3>No loans yet, click around to get started!</h3>
         </div>
         )
