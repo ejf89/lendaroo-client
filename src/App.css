@@ -14,8 +14,23 @@ body {
 }
 
 table {
+  background-color: #e66e53;
+  color: white;
+  border-radius: 15;
+}
+
+tr:nth-child(odd) {background-color: #ff7758}
+tr:nth-child(even) {background-color: #ffa48f}
+
+th {
+  color: white;
   background-color: #ffa48f;
 }
+
+/*table.table.table-striped tr.found td {
+    background-color:#CECBCB;
+}*/
+
 
 #mapDaddy{
   height: 500px;
@@ -48,6 +63,7 @@ table {
 #googleSearchContainer{
   padding-top: 3em;
   color: white;
+   text-shadow: -0.04em 0 black, 0 0.04em black, 0.04em 0 black, 0 -0.04em black;
 }
 
 #g-search{
@@ -318,15 +334,13 @@ table {
   max-width: 14em;
 }
 
-
-
 #userViewContainer{
   margin-top: 10em;
 }
 
 #userViewContainer p {
-  color: #29248a;
-  background-color: #eb9057;
+  color: white;
+  background-color: #ffa48f;
   border-radius: 10px 10px 10px 10px;
 }
 

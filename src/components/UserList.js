@@ -8,6 +8,7 @@ import UserDetailBookDetail from './UserDetailBookDetail'
 function UserList (props) {
   let selectedUsersBooks = []
 
+
   // if (props.history.location.pathname.includes("users/") && firstLoad === false){
   //   let userId = parseInt(props.history.location.pathname.split("/")[2], 10)
   //   props.setSelectedUserById(userId)
@@ -33,7 +34,7 @@ function UserList (props) {
 
   return(<div className="row" id="userViewContainer">
           <div id="userTable" className="col-md-4">
-            <Table striped condensed hover>
+            <Table condensed hover>
               <thead>
                 <tr><th>Users</th></tr>
               </thead>
