@@ -13,18 +13,28 @@ body {
   font-family: 'Hind', sans-serif;
 }
 
-table {
+#userViewContainer table {
   background-color: #e66e53;
   color: white;
   border-radius: 15;
 }
 
-tr:nth-child(odd) {background-color: #ff7758}
-tr:nth-child(even) {background-color: #ffa48f}
+ #userViewContainer tr:nth-child(odd) {background-color: #ff7758}
+ #userViewContainer tr:nth-child(even) {background-color: #ffa48f}
+
+ .inboxTable tr:nth-child(odd) {background-color: #ff7758}
+
+tr {
+  background-color:  #ffa48f;
+  color: white;
+}
+/*tr:nth-child(even) {background-color: #ffa48f}*/
+
 
 th {
-  color: white;
-  background-color: #ffa48f;
+  color: #ffa48f;
+  background-color: white;
+
 }
 
 /*table.table.table-striped tr.found td {
