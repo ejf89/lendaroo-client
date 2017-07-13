@@ -5,7 +5,6 @@ import {mapMarker} from '../App.css'
 
 export default function (props) {
 
-
     return(
       <div style={mapMarker}>
         <p>{props.name}</p>

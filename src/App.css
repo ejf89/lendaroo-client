@@ -23,18 +23,28 @@ body {
  #userViewContainer tr:nth-child(even) {background-color: #ffa48f}
 
  .inboxTable tr:nth-child(odd) {background-color: #ff7758}
+ .inboxTable tr:hover {
+   background-color: #50d6b0;
+ }
 
 tr {
   background-color:  #ffa48f;
   color: white;
 }
-/*tr:nth-child(even) {background-color: #ffa48f}*/
+
+.mapLink{
+  font-size: 175%;
+  color: white;
+  text-shadow: -0.04em 0 black, 0 0.04em black, 0.04em 0 black, 0 -0.04em black;
+
+}
+
+
 
 
 th {
   color: #ffa48f;
   background-color: white;
-
 }
 
 /*table.table.table-striped tr.found td {
@@ -364,6 +374,7 @@ th {
  background-color:rgba(237,236,236,0.6);
  max-height: 150px;
  overflow-y: scroll;
+ color: #ffa48f;
 }
 
 #userDetailView{
