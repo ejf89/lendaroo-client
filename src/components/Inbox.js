@@ -46,7 +46,7 @@ export default function Inbox (props) {
       let receivedRequests = () => {
         if (userIsGiver().length > 0){
           return <div>
-            <Table striped condensed hover>
+            <Table condensed hover className="inboxTable">
               <thead>
                 <tr><th>Received Requests</th></tr>
               </thead>
@@ -72,7 +72,7 @@ export default function Inbox (props) {
       let pendingRequests = () => {
         if (userIsTaker().length > 0){
           return <div>
-            <Table striped condensed hover>
+            <Table  condensed hover className="inboxTable">
               <thead>
                 <tr><th>Pending Requests</th></tr>
               </thead>
@@ -88,7 +88,7 @@ export default function Inbox (props) {
       let currentLoans = () => {
         if (userApproved().length > 0 || userRequested.length > 0){
           return <div>
-            <Table striped hover>
+            <Table hover className="inboxTable">
               <thead>
                 <tr><th> Current Loans</th></tr>
               </thead>

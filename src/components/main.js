@@ -55,6 +55,8 @@ class Main extends Component {
     this.getKarma = this.getKarma.bind(this)
     this.setKarma = this.setKarma.bind(this)
     this.setHoverUser = this.setHoverUser.bind(this)
+    this.fetchAllBooks = this.fetchAllBooks.bind(this)
+    this.fetchRailsUserBooks = this.fetchRailsUserBooks.bind(this)
   }
 
   logIn(loginParams) {
@@ -136,6 +138,14 @@ class Main extends Component {
       this.props.history.push('/login')
     }
     BooksAdapter.all().then(data => this.setState({books: data}))
+  }
+
+  fetchAllBooks(){
+    BooksAdapter.all().then(data => this.setState({books: data}))
+  }
+
+  fetchRailsUserBooks(){
+    BooksAdapter.getRailsUserBooks().then(data => this.setState({railsUserBooks: data}))
   }
 
 
@@ -353,24 +363,22 @@ class Main extends Component {
   setSelectedUser(e){
     e.preventDefault()
     let userId = parseInt(e.target.id, 10)
-    let user = this.state.users.filter( user => user.id === userId)
+    let user = this.state.users.filter( user => user.id === userId)[0]
     this.setState({
       selectedUser: user
     })
     this.resetSelectedBook()
 
-    this.props.history.push(`/users/${user[0].id}`)
+    this.props.history.push(`/users/${user.id}`)
   }
 
-  setSelectedUserById(id){
-    let user = this.state.users.filter( user => user.id === id)
+  setSelectedUserById(user){
+    // let user = this.state.users.filter( user => user.id === id)
     this.setState({
       selectedUser: user
     })
     this.resetSelectedBook()
   }
-
-
 
   render() {
     return (
@@ -496,6 +504,12 @@ class Main extends Component {
           }
           setSelectedUserById = {
             this.setSelectedUserById
+          }
+          fetchAllBooks = {
+            this.fetchAllBooks
+          }
+          fetchRailsUserBooks = {
+            this.fetchRailsUserBooks
           }
       /> } />
 
