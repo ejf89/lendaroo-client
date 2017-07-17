@@ -5,7 +5,6 @@ import { Table } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import UserDetailBookDetail from './UserDetailBookDetail'
 import UserAdapter from '../adapters/UserAdapter'
-import BooksAdapter from '../adapters/BooksAdapter'
 
 class UserList extends Component {
   constructor(props){
@@ -37,7 +36,7 @@ class UserList extends Component {
     console.log(np.selectedUser.id )
     console.log('cp')
     console.log(this.props.selectedUser.id)
-    if (np.selectedUser.id != this.props.selectedUser.id ) {
+    if (np.selectedUser.id !== this.props.selectedUser.id ) {
       this.setBooks()
     } else {
       console.log('No need to update books')
