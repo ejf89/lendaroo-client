@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Route, withRouter} from 'react-router-dom'
 import UserContainer from './UserContainer'
-import LoginForm from './LoginForm.js'
+import LoginForm from './loginform.js'
 // import BooksContainer from './BooksContainer'
 import AuthAdapter from '../adapters/AuthAdapter'
 import LoanAdapter from '../adapters/LoanAdapter'
