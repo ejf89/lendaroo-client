@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Route, withRouter} from 'react-router-dom'
-import LoginForm from './LoginForm.js'
+import LoginForm from '/LoginForm.js'
 import UserContainer from './UserContainer'
 // import BooksContainer from './BooksContainer'
 import AuthAdapter from '../adapters/AuthAdapter'
