@@ -52,11 +52,9 @@ class LoginForm extends Component {
         <h3 id="firstWelcome">welcome to</h3>
         <h2 id="firstLogo"><span>L</span>it Len<span>d</span></h2>
         <p  id="tagLine">...it's lit</p>
-
         <div className="row">
           <div className="col-md-1">
           </div>
-
           <div className="col-md-3" id="loginFields">
             <p> Login </p>
               <form id="login" onSubmit={this.handleSubmit}>
@@ -68,14 +66,10 @@ class LoginForm extends Component {
                 <input type="submit" className="loginButton" />
             </form>
           </div>
-
-
         <div className="col-md-2 signUpHeader">
           <p>or sign up for a new account   <Glyphicon glyph="arrow-right"/></p>
         </div>
-
         <div className="col-md-3">
-
           <form id="signUp" onSubmit={this.handleSubmit}>
             <label>Username</label>
             <input type="text" placeholder="Pick a Username!" onChange={this.handleSignUpChange} name="username"/>
@@ -89,16 +83,12 @@ class LoginForm extends Component {
             <input type="text" placeholder="Enter your home address" onChange={this.handleSignUpChange} name="address"/>
             <label>How about a short bio?</label>
             <input type="textarea" placeholder="a lil bit about yourself..." onChange={this.handleSignUpChange} name="bio"/>
-
             <input type="submit" className="loginButton" />
           </form>
         </div>
       </div>
     </div>
-
-
     )
   }
 }
-
 export default LoginForm
