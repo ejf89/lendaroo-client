@@ -3,6 +3,7 @@ const baseUrl = 'https://morning-cliffs-63985.herokuapp.com/api/v1'
 export default class AuthAdapter {
 
   static logIn(loginParams) {
+    console.log("trying to login")
     return fetch(`${baseUrl}/auth`, {
       method: 'POST',
       headers: headers(),

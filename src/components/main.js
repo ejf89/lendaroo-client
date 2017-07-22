@@ -86,16 +86,13 @@ class Main extends Component {
   }
 
   createUser(userParams) {
-    console.log('sending into to backend...')
+    console.log('trying to create user...')
     UserAdapter.createUser(userParams).then(user => {
       if (!user.error) {
         this.setUser(user)
         this.componentDidMount()
       }
     })
-
-
-
     }
 
 

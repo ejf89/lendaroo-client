@@ -1,5 +1,5 @@
 const googleUrl = 'https://www.googleapis.com/books/v1/volumes?q='
-const baseUrl = 'http://localhost:3000/api/v1'
+const baseUrl = 'https://morning-cliffs-63985.herokuapp.com/api/v1'
 
 export default class GoogleAdapter{
   static searchBooks(searchTerm){
