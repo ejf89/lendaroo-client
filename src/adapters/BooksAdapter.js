@@ -49,6 +49,7 @@ export default class BooksAdapter {
 
 
   static url(){
+    console.log(baseUrl)
     return `${baseUrl}/books`
   }
 }
