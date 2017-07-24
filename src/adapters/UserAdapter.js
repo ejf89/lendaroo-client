@@ -1,4 +1,6 @@
-const baseUrl = 'https://morning-cliffs-63985.herokuapp.com/api/v1'
+const baseUrl = 'https://murmuring-wave-91310.herokuapp.com/api/v1'
+// const baseUrl = 'http://localhost:3000/api/v1'
+
 
 export default class UserAdapter {
   static all(){
