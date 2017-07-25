@@ -97,7 +97,6 @@ class Main extends Component {
 
 
   componentDidMount() {
-    console.log("main mounting")
     if (localStorage.getItem('user_id')) {
       let user_id = parseInt(localStorage.getItem('user_id'), 10)
       AuthAdapter.currentUser(user_id).then(user => this.setState({
@@ -109,7 +108,6 @@ class Main extends Component {
     )
   )
   .then(() => {
-          console.log("betweener")
         BooksAdapter.getRailsUserBooks().then(data => this.setState({railsUserBooks: data}))
 
           .then(() => {
@@ -179,7 +177,6 @@ class Main extends Component {
           : 5
       }
     })
-    console.log("first part")
     GoogleAdapter.createLocalBooks(reshapedBooks).then((books) => {
       books.forEach(book => this.setState((previousState) => {
         return {
@@ -219,7 +216,6 @@ class Main extends Component {
   }
 
   setSelectedBook(e) {
-    console.log("I AM SETTING THE BOOK")
     let bookId = parseInt(e.target.id, 10)
     let booksArr = this.state.books
     let findBook = book => book.id === bookId
@@ -349,7 +345,6 @@ class Main extends Component {
   }
 
   setHoverUser(e){
-    console.log("in set hover user")
     let userId = parseInt(e.target.parentElement.id, 10)
     let user = this.state.users.filter( user => user.id === userId)
     this.setState({

@@ -12,7 +12,7 @@ export default function (props) {
 
       return (<Link className="mapLink" to={`/users/${props.hoverUser[0].id}`} ><p className="mapInfo">{props.hoverUser[0].username}</p></Link>)
     } else {
-      console.log("no hover selected")
+      return null
     }
   }
 

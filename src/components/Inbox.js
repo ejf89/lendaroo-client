@@ -4,7 +4,6 @@ import { Button, Glyphicon, Table } from 'react-bootstrap'
 export default function Inbox (props) {
 
   if (props.loans === undefined){
-    console.log('load1')
     return <div>"LOADING..."</div>
   }
 
