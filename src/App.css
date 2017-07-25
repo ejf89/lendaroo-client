@@ -21,7 +21,7 @@ body {
 
  #userViewContainer tr:nth-child(odd) {background-color: #ff7758}
  #userViewContainer tr:nth-child(even) {background-color: #ffa48f}
- #userViewContainer tr:hover { background-color: #50d6b0;}
+ #userViewContainer table tr:hover { background-color: #50d6b0;}
 
  .inboxTable tr:nth-child(odd) {background-color: #ff7758}
  .inboxTable tr:hover { background-color: #50d6b0;}
@@ -35,7 +35,6 @@ tr {
   font-size: 175%;
   color: white;
   text-shadow: -0.04em 0 black, 0 0.04em black, 0.04em 0 black, 0 -0.04em black;
-
 }
 
 
