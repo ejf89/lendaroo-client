@@ -71,7 +71,7 @@ class UserList extends Component {
   render(){
     return(<div className="row" id="userViewContainer">
     <div id="userTable" className="col-md-4">
-      <Table condensed hover>
+      <Table condensed >
         <thead>
           <tr><th>Users</th></tr>
         </thead>
