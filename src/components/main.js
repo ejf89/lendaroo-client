@@ -86,7 +86,6 @@ class Main extends Component {
   }
 
   createUser(userParams) {
-    console.log('trying to create user...')
     UserAdapter.createUser(userParams).then(user => {
       if (!user.error) {
         this.setUser(user)
@@ -109,7 +108,6 @@ class Main extends Component {
     )
   )
   .then(() => {
-          console.log("betweener")
         BooksAdapter.getRailsUserBooks().then(data => this.setState({railsUserBooks: data}))
 
           .then(() => {
@@ -219,7 +217,6 @@ class Main extends Component {
   }
 
   setSelectedBook(e) {
-    console.log("I AM SETTING THE BOOK")
     let bookId = parseInt(e.target.id, 10)
     let booksArr = this.state.books
     let findBook = book => book.id === bookId
@@ -349,7 +346,6 @@ class Main extends Component {
   }
 
   setHoverUser(e){
-    console.log("in set hover user")
     let userId = parseInt(e.target.parentElement.id, 10)
     let user = this.state.users.filter( user => user.id === userId)
     this.setState({
