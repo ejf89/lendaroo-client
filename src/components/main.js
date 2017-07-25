@@ -86,7 +86,6 @@ class Main extends Component {
   }
 
   createUser(userParams) {
-    console.log('trying to create user...')
     UserAdapter.createUser(userParams).then(user => {
       if (!user.error) {
         this.setUser(user)
