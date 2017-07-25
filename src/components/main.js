@@ -96,7 +96,6 @@ class Main extends Component {
 
 
   componentDidMount() {
-    console.log("main mounting")
     if (localStorage.getItem('user_id')) {
       let user_id = parseInt(localStorage.getItem('user_id'), 10)
       AuthAdapter.currentUser(user_id).then(user => this.setState({
@@ -177,7 +176,6 @@ class Main extends Component {
           : 5
       }
     })
-    console.log("first part")
     GoogleAdapter.createLocalBooks(reshapedBooks).then((books) => {
       books.forEach(book => this.setState((previousState) => {
         return {
