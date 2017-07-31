@@ -8,6 +8,11 @@ LitLend is a ReactJS application built on top of a RESTful Ruby on Rails API. It
 
 
 
+![Alt text](readMeImages/bigBuddy.png?raw=true "Title")
+
+
+![Alt text](readMeImages/userBrowse.png?raw=true "Title")
+
 
 * **Eric Farber**
 
